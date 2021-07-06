@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TankPocalypse.WPF.Logic.Networking.EnemyNetworkPackage">
+    <Position X="25.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Logic\Networking\EnemyNetworkPackage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankPocalypse.WPF.Logic.Networking.ExitPacket">
+    <Position X="15" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Logic\Networking\ExitPacket.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankPocalypse.WPF.Logic.Networking.Extension">
+    <Position X="32.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Logic\Networking\Extension.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankPocalypse.WPF.Logic.Networking.GameEndedPacket">
+    <Position X="3.75" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Logic\Networking\GameEndedPacket.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankPocalypse.WPF.Logic.Networking.Packet">
+    <Position X="12.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAASCAAAAAAAEAAEAQAAAAASAAAAAAAQAAAAAABAA=</HashCode>
+      <FileName>Logic\Networking\Packet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankPocalypse.WPF.Logic.Networking.PingPacket">
+    <Position X="10.5" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Logic\Networking\PingPacket.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankPocalypse.WPF.Logic.Networking.ReadyPacket">
+    <Position X="12.75" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Logic\Networking\ReadyPacket.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankPocalypse.WPF.Logic.Networking.SaveFileHelper" BaseTypeListCollapsed="true">
+    <Position X="31" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAACEAA=</HashCode>
+      <FileName>Logic\Networking\SaveFileHelper.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TankPocalypse.WPF.Logic.Networking.SaveFilePacket">
+    <Position X="19.5" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAgAAABAAAAAAAAAAAACEAA=</HashCode>
+      <FileName>Logic\Networking\SaveFilePacket.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankPocalypse.WPF.Logic.Networking.ServerGamePacket">
+    <Position X="6" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAABAAAAAAAAgAAAABACAAAIAAAAAAA=</HashCode>
+      <FileName>Logic\Networking\ServerGamePacket.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankPocalypse.WPF.Logic.Networking.Tank">
+    <Position X="24" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAgAAAgAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Logic\Networking\Tank.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankPocalypse.WPF.Logic.Networking.TcpGameClient" BaseTypeListCollapsed="true">
+    <Position X="27.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAEQIAEAAAAEAAhAAIJAAMAQBAAgICBAABBAAAAY=</HashCode>
+      <FileName>Logic\Networking\TcpGameClient.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TankPocalypse.WPF.Logic.Networking.TcpGameServer" BaseTypeListCollapsed="true">
+    <Position X="29.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAGIACAAAEgAFoBACKAAJAAGMAhAQBAAAAAY=</HashCode>
+      <FileName>Logic\Networking\TcpGameServer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TankPocalypse.WPF.Logic.Networking.UIMap" BaseTypeListCollapsed="true">
+    <Position X="20.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Logic\Networking\UIMap.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TankPocalypse.WPF.Logic.Networking.UnitCountPacket">
+    <Position X="17.25" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Logic\Networking\UnitCountPacket.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankPocalypse.WPF.Logic.Networking.UserMapDataPacket">
+    <Position X="21.75" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAABAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Logic\Networking\UserMapDataPacket.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankPocalypse.WPF.Logic.Networking.UsernamePacket">
+    <Position X="8.25" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAABAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Logic\Networking\UsernamePacket.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankPocalypse.WPF.Logic.Networking.VectorExtend">
+    <Position X="22.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAYAA=</HashCode>
+      <FileName>Logic\Networking\VectorExtend.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankPocalypse.WPF.Logic.GameControl" BaseTypeListCollapsed="true">
+    <Position X="25.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAgEgBoUAwAAAAhAhQAAAARkgAEiIAAECAIgACAAE=</HashCode>
+      <FileName>Logic\GameControl.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TankPocalypse.WPF.Logic.MenuImages" BaseTypeListCollapsed="true">
+    <Position X="27.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAEAAAAEAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Logic\MenuImages.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TankPocalypse.WPF.UI.ClientMenu" BaseTypeListCollapsed="true">
+    <Position X="19.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>UI\ClientMenu.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TankPocalypse.WPF.UI.GameViewUserControl" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAQAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\GameViewUserControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TankPocalypse.WPF.UI.HighScoreMenu" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\HighScoreMenu.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TankPocalypse.WPF.UI.LoadMenu" BaseTypeListCollapsed="true">
+    <Position X="18" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>UI\LoadMenu.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TankPocalypse.WPF.UI.LobbyMenu" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>UI\LobbyMenu.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TankPocalypse.WPF.UI.MainMenu" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\MainMenu.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TankPocalypse.WPF.UI.NewProfileMenu" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>UI\NewProfileMenu.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TankPocalypse.WPF.UI.ProfileMenu" BaseTypeListCollapsed="true">
+    <Position X="4" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAEA=</HashCode>
+      <FileName>UI\ProfileMenu.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TankPocalypse.WPF.UI.ServerMenu" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\ServerMenu.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TankPocalypse.WPF.VM.ClientViewModel">
+    <Position X="19.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAIgAAACIAAAAAAABAAAAAQAgAQAAIAE=</HashCode>
+      <FileName>VM\ClientViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankPocalypse.WPF.VM.GameViewModel">
+    <Position X="12.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAEEIAEAAgACABIAAAAAAABAAAIAQKgCQAAoAE=</HashCode>
+      <FileName>VM\GameViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankPocalypse.WPF.VM.HighScoreViewModel">
+    <Position X="14.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAggAAAIIAAAAAAABAAAAAQAgAQAAIAE=</HashCode>
+      <FileName>VM\HighScoreViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankPocalypse.WPF.VM.LoadViewModel">
+    <Position X="18" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQgAAAEAAAAAgAAAAIBgAAAAIBAAAAAQAgCQAAIAE=</HashCode>
+      <FileName>VM\LoadViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankPocalypse.WPF.VM.LobbyViewModel">
+    <Position X="9.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQAEAQIAAAAAAgAAAAIEAAAAAAFACAAAQAoAQgAIEE=</HashCode>
+      <FileName>VM\LobbyViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankPocalypse.WPF.VM.MainViewModel">
+    <Position X="11" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAwVIAEkBAAJKIAwAAiMAACAIAAGIGAAEIAIQEAIEGA=</HashCode>
+      <FileName>VM\MainViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankPocalypse.WPF.VM.MenuViewModel">
+    <Position X="16.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAIAAAAAAABAAAAAQAgAQAAIAE=</HashCode>
+      <FileName>VM\MenuViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankPocalypse.WPF.VM.NewProfileViewModel">
+    <Position X="7.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgEAgQAAAAAAAAgCAAAIAAAAAAAHAAAABQAgAQAAIAE=</HashCode>
+      <FileName>VM\NewProfileViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankPocalypse.WPF.VM.ProfileViewModel">
+    <Position X="4" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAgkCAAIIBAAAAIABAACAAQAgAQAAIAE=</HashCode>
+      <FileName>VM\ProfileViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankPocalypse.WPF.VM.ServerViewModel">
+    <Position X="5.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIEAgAAEAAAABAgAAAAIAAAAAAABAAAAAQAgAQCAIAE=</HashCode>
+      <FileName>VM\ServerViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankPocalypse.WPF.App">
+    <Position X="29.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankPocalypse.WPF.MainWindow" BaseTypeListCollapsed="true">
+    <Position X="11" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TankPocalypse.WPF.TankIoc" BaseTypeListCollapsed="true">
+    <Position X="29.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>TankIoc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="TankPocalypse.WPF.Interfaces.IGameControl">
+    <Position X="23.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAgBkEAwAAAAhAhQAAAAAEAAACAAAAAAAgAAAAE=</HashCode>
+      <FileName>Interfaces\IGameControl.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TankPocalypse.WPF.Interfaces.IMenuImages">
+    <Position X="27.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IMenuImages.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TankPocalypse.WPF.Interfaces.ITcpGameClient">
+    <Position X="27.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAQAAEAAAAAAAgAAAJAAAAAAAAAIAAAABAAAAAY=</HashCode>
+      <FileName>Interfaces\ITcpGameClient.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TankPocalypse.WPF.Interfaces.ITcpGameServer">
+    <Position X="29.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEIACAAAAgAEgAAACAAIAAGMAgAABAAAAAY=</HashCode>
+      <FileName>Interfaces\ITcpGameServer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="TankPocalypse.WPF.Logic.Networking.PacketType">
+    <Position X="14.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAgAAAAAgAAAAgAAUAAAAAAAAAAAAAAJQAQAAECgAA=</HashCode>
+      <FileName>Logic\Networking\PacketType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

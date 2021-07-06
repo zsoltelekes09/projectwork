@@ -1,0 +1,1700 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TankPocalypse.Model</name>
+    </assembly>
+    <members>
+        <member name="T:TankPocalypse.Model.ExtensionMethods">
+            <summary>
+            This is an extension class, which adds extension methods to the specified type.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.ExtensionMethods.RotateByAngle(System.Numerics.Vector2,System.Single)">
+            <summary>
+            Rotates the given vector by the given degree input. Degree value is float.
+            </summary>
+            <param name="v">Vector to rotate.</param>
+            <param name="degrees">Rotation unit in degrees.</param>
+            <returns>The input vectors rotated version.</returns>
+        </member>
+        <member name="M:TankPocalypse.Model.ExtensionMethods.RotateByAngle(System.Numerics.Vector2,System.Double)">
+            <summary>
+            Rotates the given vector by the given degree input. Degree value is double.
+            </summary>
+            <param name="v">Vector to rotate.</param>
+            <param name="degrees">Rotation unit in degrees.</param>
+            <returns>The input vectors rotated version.</returns>
+        </member>
+        <member name="M:TankPocalypse.Model.ExtensionMethods.VectorAngle(System.Numerics.Vector2,System.Numerics.Vector2)">
+            <summary>
+            Returns the angle between two vector in degrees.
+            </summary>
+            <param name="vecA">Vector one.</param>
+            <param name="vecB">Vector two.</param>
+            <returns>Angle value in degrees.</returns>
+        </member>
+        <member name="M:TankPocalypse.Model.ExtensionMethods.ClampAngleToNearestTheta(System.Double,System.Int32)">
+            <summary>
+            Clamps the double input angle value to theta if it exceeds theta input.
+            </summary>
+            <param name="angle">Input value to be clamped.</param>
+            <param name="theta">Maximum value.</param>
+            <returns>Clamped value.</returns>
+        </member>
+        <member name="M:TankPocalypse.Model.ExtensionMethods.ClampIntegerToNearestTheta(System.Int32,System.Int32)">
+            <summary>
+            Clamps the integer input value to theta if it exceeds theta input.
+            </summary>
+            <param name="input">Input value to be clamped.</param>
+            <param name="theta">Maximum value.</param>
+            <returns>Clamped value.</returns>
+        </member>
+        <member name="M:TankPocalypse.Model.ExtensionMethods.ClampAngleToMaxValue(System.Double,System.Int32)">
+            <summary>
+            Clamps the input double value if it exceeds the maximum value.
+            </summary>
+            <param name="angle">Input value to clamp if exceeds max value.</param>
+            <param name="maxSpeed">Maximum value.</param>
+            <returns>Clamped value.</returns>
+        </member>
+        <member name="T:TankPocalypse.Model.FlowField.Cell">
+            <summary>
+            Cell class represents a Node from the world, but is used for flowfield calculations.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.FlowField.Cell.#ctor(System.Numerics.Vector2,System.Numerics.Vector2)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Model.FlowField.Cell"/> class.
+            </summary>
+            <param name="worldPos">World location of cell.</param>
+            <param name="cellIndex">Index value of the cell.</param>
+        </member>
+        <member name="P:TankPocalypse.Model.FlowField.Cell.WorldPos">
+            <summary>
+            Gets or sets the world location of the cell.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.FlowField.Cell.Cost">
+            <summary>
+            Gets or sets the cost of the cell.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.FlowField.Cell.BestCost">
+            <summary>
+            Gets or sets the best cost of the cell.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.FlowField.Cell.BestDirection">
+            <summary>
+            Gets or sets the best direction of the cell.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.FlowField.Cell.CellIndex">
+            <summary>
+            Gets the cell index inside flowfield gird.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.FlowField.Cell.LesserCellBlock">
+            <summary>
+            Gets an array of lesser cells.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.FlowField.Cell.HasLesserCells">
+            <summary>
+            Gets or sets a value indicating whether cell has lesser cells or not.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.FlowField.Cell.SetupLesserCell(System.Numerics.Vector2,System.Numerics.Vector2)">
+            <summary>
+            Generates lesser cells.
+            </summary>
+            <param name="start">Start idx.</param>
+            <param name="end">End idx.</param>
+        </member>
+        <member name="T:TankPocalypse.Model.FlowField.FlowFieldController">
+            <summary>
+            Flowfield class is the main pathfinder class.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.FlowField.FlowFieldController.#ctor(TankPocalypse.Model.Interfaces.IGameWorld)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Model.FlowField.FlowFieldController"/> class.
+            </summary>
+            <param name="wg">GameWorld entity.</param>
+        </member>
+        <member name="P:TankPocalypse.Model.FlowField.FlowFieldController.Grid">
+            <summary>
+            Gets the flowfield grid.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.FlowField.FlowFieldController.GridHeight">
+            <summary>
+            Gets the flowfield height.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.FlowField.FlowFieldController.GridWidth">
+            <summary>
+            Gets the flowfield width.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.FlowField.FlowFieldController.CardinalDirections">
+            <summary>
+            Gets the list of cardinal directions.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.FlowField.FlowFieldController.AllDirections">
+            <summary>
+            Gets the list of all directions.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.FlowField.FlowFieldController.SetupFlowField">
+            <summary>
+            Initialises the flowfield.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.FlowField.FlowFieldController.RequestRoute(System.Numerics.Vector2)">
+            <summary>
+            Creates the flowfield and returns it to the caller.
+            </summary>
+            <param name="destinationPos">Target destination.</param>
+            <returns>Flowfield.</returns>
+        </member>
+        <member name="M:TankPocalypse.Model.FlowField.FlowFieldController.GenerateGrid">
+            <summary>
+            Generates flowfield grid.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.Model.FlowField.LesserCell">
+            <summary>
+            Lessercell is located inside a "Cell" entity.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.FlowField.LesserCell.#ctor(System.Numerics.Vector2,System.Numerics.Vector2,TankPocalypse.Model.FlowField.Cell)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Model.FlowField.LesserCell"/> class.
+            </summary>
+            <param name="start">Start direction.</param>
+            <param name="end">End direction.</param>
+            <param name="parentCell">Parent cell.</param>
+        </member>
+        <member name="P:TankPocalypse.Model.FlowField.LesserCell.ParentCell">
+            <summary>
+            Gets the parent cell.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.FlowField.LesserCell.BestDirection">
+            <summary>
+            Gets the best direction to the next node.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.FlowField.LesserCell.OutwardDirection">
+            <summary>
+            Gets the outward direction.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.FlowField.LesserCell.SetBestDirection(System.Numerics.Vector2)">
+            <summary>
+            Sets the best direction from input.
+            </summary>
+            <param name="inputDir">Input direction.</param>
+        </member>
+        <member name="T:TankPocalypse.Model.GameImageController">
+            <summary>
+            The game image controller class stores access to all the embended resorce images.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.GameImageController.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Model.GameImageController"/> class.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameImageController.NodeTextures">
+            <summary>
+            Gets the node textures dicitonary.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameImageController.ObjectTextures">
+            <summary>
+            Gets the object textures dictionary.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameImageController.DebugTextures">
+            <summary>
+            Gets the debug textures dictionary.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameImageController.TankBodyTextures">
+            <summary>
+            Gets the tank team0 body textures dictionary.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameImageController.TankTurretTextures">
+            <summary>
+            Gets the tank team0 turret textures dictionary.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameImageController.Team1BodyTextures">
+            <summary>
+            Gets the tank team1 body textures dictionary.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameImageController.Team1TurretTextures">
+            <summary>
+            Gets the tank team1 turret textures dictionary.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameImageController.Shooting">
+            <summary>
+            Gets the shooting animation textures dictionary.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameImageController.HealthBarTextures">
+            <summary>
+            Gets the healthbar textures dictionary.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameImageController.OtherTextures">
+            <summary>
+            Gets the other textures dictionary.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameImageController.UITextures">
+            <summary>
+            Gets the UI textures dictionary.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameImageController.ExplosionTextures">
+            <inheritdoc/>
+        </member>
+        <member name="P:TankPocalypse.Model.GameImageController.FlameTextures">
+            <inheritdoc/>
+        </member>
+        <member name="P:TankPocalypse.Model.GameImageController.PauseBackgound">
+            <summary>
+            Gets the pause screen backgorund.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.GameImageController.DeleteEverything">
+            <summary>
+            Clears every texture reference.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.Model.GameModel">
+            <summary>
+            This is the game model class. It handels all the necessary data of the gamestate.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.GameModel.#ctor(TankPocalypse.Model.Interfaces.IGameWorld,TankPocalypse.Model.Interfaces.IFlowField)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Model.GameModel"/> class.
+            </summary>
+            <param name="gw">GameWorld entity.</param>
+            <param name="flowField">FlowField entity.</param>
+        </member>
+        <member name="E:TankPocalypse.Model.GameModel.UnitCreated">
+            <summary>
+            Unit created event fires when a unit has been created.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameModel.TeamID">
+            <summary>
+            Gets the team identifier.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameModel.Vehicles">
+            <summary>
+            Gets the vehicles list.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameModel.OnScreenObjects">
+            <summary>
+            Gets or sets the onscreen objects list.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameModel.OnScreenVehicles">
+            <summary>
+            Gets or sets the onscreen vehicles.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameModel.OnScreenClickableObjectsTeam0">
+            <summary>
+            Gets or sets the onscreen clickable objects from team0.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameModel.OnScreenClickableObjectsTeam1">
+            <summary>
+            Gets or sets the onscreen clickable objects from team1.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameModel.VehiclesTeam0">
+            <summary>
+            Gets or sets the team0 vehicles list.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameModel.VehiclesTeam1">
+            <summary>
+            Gets or sets the team1 vehicles list.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameModel.RevealedNodes">
+            <summary>
+            Gets or sets the revealed nodes list.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameModel.OnScreenClickableObjects">
+            <summary>
+            Gets or sets the onscreen clickable objects.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameModel.TeamVehicles">
+            <summary>
+            Gets or sets the team vehicles list.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameModel.EnemyVehicles">
+            <summary>
+            Gets or sets the enemyvehciles list.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameModel.Team0BasePercent">
+            <summary>
+            Gets or sets the base capture percent of team 0.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameModel.Team1BasePercent">
+            <summary>
+            Gets or sets the base capture percent of team 1.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameModel.Team0InitCount">
+            <summary>
+            Gets or sets the initial unit count of team 0.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameModel.Team1InitCount">
+            <summary>
+            Gets or sets the initial unit count of team 1.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameModel.SelfVehicleInitCount">
+            <summary>
+            Gets the team vehicle init count.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameModel.EnemyVehicleInitCount">
+            <summary>
+            Gets the enemy vehicle init count.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameModel.OutcomeCase">
+            <summary>
+            Gets or sets the outcome.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameModel.Paused">
+            <summary>
+            Gets or sets a value indicating whether the game is paused or not.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameModel.SessionTime">
+            <summary>
+            Gets or sets the session time.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameModel.GameOver">
+            <summary>
+            Gets or sets a value indicating whether the game is orver or not.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameModel.ScreenOffset">
+            <summary>
+            Gets or sets the screen offset vector.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameModel.IsServer">
+            <summary>
+            Gets or sets a value indicating whether application is in server mode or not.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameModel.Ping">
+            <summary>
+            Gets or sets a ping value.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameModel.SelectStart">
+            <summary>
+            Gets or sets the start position of screen selection.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameModel.SelectEnd">
+            <summary>
+            Gets or sets the end position of screen selection.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.GameModel.Multiselect">
+            <summary>
+            Gets or sets a value indicating whether multiselection started or not.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.GameModel.SetTeamID(System.Byte)">
+            <summary>
+            Gets the team id.
+            </summary>
+            <param name="id">Team id.</param>
+        </member>
+        <member name="M:TankPocalypse.Model.GameModel.CreateUnit(System.Byte,System.Numerics.Vector2,System.Single,System.Byte)">
+            <summary>
+            Creates a unit.
+            </summary>
+            <param name="uniqueId">Units id.</param>
+            <param name="locOnMap">Units location on map.</param>
+            <param name="radius">Units size radius.</param>
+            <param name="team">Units team id.</param>
+            <returns>A new IVehicle object.</returns>
+        </member>
+        <member name="M:TankPocalypse.Model.GameModel.CreateVehicles(System.Byte)">
+            <summary>
+            This method creates the given count of vehicles on the map.
+            </summary>
+            <param name="count">Vehicle count to create. Only even values should be used.</param>
+        </member>
+        <member name="T:TankPocalypse.Model.Interfaces.IClickableObject">
+            <summary>
+            This interface forces the implementer object to have clickable properties, which are necessary for mouse interaction.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IClickableObject.ObjectScreenStartPosition">
+            <summary>
+            Gets or sets the top left corner of the object through the viewport.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IClickableObject.ObjectScreenEndPosition">
+            <summary>
+            Gets or sets the bottom right corner of the object through the viewport.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IClickableObject.Position">
+            <summary>
+            Gets or sets the position on screen.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IClickableObject.TeamId">
+            <summary>
+            Gets the teamID.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.Interfaces.IClickableObject.SetSelected">
+            <summary>
+            Sets the object selected.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.Interfaces.IClickableObject.SetDeselected">
+            <summary>
+            Sets the object deselected.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.Model.Interfaces.IFlowField">
+            <summary>
+            Interface for flowfield pathinder class.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.Interfaces.IFlowField.RequestRoute(System.Numerics.Vector2)">
+            <summary>
+            Creates the flowfield and returns it to the caller.
+            </summary>
+            <param name="destinationPos">Target destination.</param>
+            <returns>Flowfield.</returns>
+        </member>
+        <member name="M:TankPocalypse.Model.Interfaces.IFlowField.SetupFlowField">
+            <summary>
+            Initialises the flowfield.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.Model.Interfaces.IGameImageController">
+            <summary>
+            Game image controller interface.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameImageController.NodeTextures">
+            <summary>
+            Gets the node textures dicitonary.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameImageController.ObjectTextures">
+            <summary>
+            Gets the object textures dictionary.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameImageController.DebugTextures">
+            <summary>
+            Gets the debug textures dictionary.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameImageController.TankBodyTextures">
+            <summary>
+            Gets the tank team0 body textures dictionary.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameImageController.TankTurretTextures">
+            <summary>
+            Gets the tank team0 turret textures dictionary.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameImageController.Team1BodyTextures">
+            <summary>
+            Gets the tank team1 body textures dictionary.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameImageController.Team1TurretTextures">
+            <summary>
+            Gets the tank team1 turret textures dictionary.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameImageController.Shooting">
+            <summary>
+            Gets the shooting animation textures dictionary.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameImageController.HealthBarTextures">
+            <summary>
+            Gets the healthbar textures dictionary.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameImageController.OtherTextures">
+            <summary>
+            Gets the other textures dictionary.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameImageController.UITextures">
+            <summary>
+            Gets the UI textures dictionary.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameImageController.PauseBackgound">
+            <summary>
+            Gets the pause screen backgorund.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameImageController.ExplosionTextures">
+            <summary>
+            Gets explosion textures.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameImageController.FlameTextures">
+            <summary>
+            Gets flame textures.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.Interfaces.IGameImageController.DeleteEverything">
+            <summary>
+            Clears every texture reference.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.Model.Interfaces.IGameModel">
+            <summary>
+            GameModel interface.
+            </summary>
+        </member>
+        <member name="E:TankPocalypse.Model.Interfaces.IGameModel.UnitCreated">
+            <summary>
+            Unit created event fires when a unit has been created.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameModel.TeamID">
+            <summary>
+            Gets the team identifier.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameModel.OnScreenObjects">
+            <summary>
+            Gets or sets the onscreen objects list.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameModel.OnScreenVehicles">
+            <summary>
+            Gets or sets the onscreen vehicles.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameModel.OnScreenClickableObjects">
+            <summary>
+            Gets or sets the onscreen clickable objects.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameModel.Vehicles">
+            <summary>
+            Gets the vehicles list.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameModel.OnScreenClickableObjectsTeam0">
+            <summary>
+            Gets or sets the onscreen clickable objects from team0.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameModel.OnScreenClickableObjectsTeam1">
+            <summary>
+            Gets or sets the onscreen clickable objects from team1.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameModel.TeamVehicles">
+            <summary>
+            Gets or sets the team vehicles list.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameModel.EnemyVehicles">
+            <summary>
+            Gets or sets the enemyvehciles list.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameModel.VehiclesTeam0">
+            <summary>
+            Gets or sets the team0 vehicles list.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameModel.VehiclesTeam1">
+            <summary>
+            Gets or sets the team1 vehicles list.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameModel.RevealedNodes">
+            <summary>
+            Gets or sets the revealed nodes list.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameModel.Team0BasePercent">
+            <summary>
+            Gets or sets the base capture percent of team 0.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameModel.Team1BasePercent">
+            <summary>
+            Gets or sets the base capture percent of team 1.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameModel.Team0InitCount">
+            <summary>
+            Gets or sets the initial unit count of team 0.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameModel.Team1InitCount">
+            <summary>
+            Gets or sets the initial unit count of team 1.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameModel.OutcomeCase">
+            <summary>
+            Gets or sets the outcome.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameModel.SelfVehicleInitCount">
+            <summary>
+            Gets the team vehicle init count.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameModel.EnemyVehicleInitCount">
+            <summary>
+            Gets the enemy vehicle init count.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameModel.Paused">
+            <summary>
+            Gets or sets a value indicating whether the game is paused or not.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameModel.SessionTime">
+            <summary>
+            Gets or sets the session time.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameModel.GameOver">
+            <summary>
+            Gets or sets a value indicating whether the game is orver or not.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameModel.ScreenOffset">
+            <summary>
+            Gets or sets the screen offset vector.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameModel.IsServer">
+            <summary>
+            Gets or sets a value indicating whether application is in server mode or not.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameModel.Ping">
+            <summary>
+            Gets or sets a ping value.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameModel.SelectStart">
+            <summary>
+            Gets or sets the start position of screen selection.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameModel.SelectEnd">
+            <summary>
+            Gets or sets the end position of screen selection.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameModel.Multiselect">
+            <summary>
+            Gets or sets a value indicating whether multiselection started or not.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.Interfaces.IGameModel.SetTeamID(System.Byte)">
+            <summary>
+            Gets the team id.
+            </summary>
+            <param name="id">Team id.</param>
+        </member>
+        <member name="M:TankPocalypse.Model.Interfaces.IGameModel.CreateVehicles(System.Byte)">
+            <summary>
+            This method creates the given count of vehicles on the map.
+            </summary>
+            <param name="count">Vehicle count to create. Only even values should be used.</param>
+        </member>
+        <member name="M:TankPocalypse.Model.Interfaces.IGameModel.CreateUnit(System.Byte,System.Numerics.Vector2,System.Single,System.Byte)">
+            <summary>
+            Creates a unit.
+            </summary>
+            <param name="uniqueId">Units id.</param>
+            <param name="locOnMap">Units location on map.</param>
+            <param name="radius">Units size radius.</param>
+            <param name="team">Units team id.</param>
+            <returns>A new IVehicle object.</returns>
+        </member>
+        <member name="T:TankPocalypse.Model.Interfaces.IGamePhysics">
+            <summary>
+            Gamephysics interface.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.Interfaces.IGamePhysics.SetupWorldBounds">
+            <summary>
+            Sets up the static world collision walls.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.Interfaces.IGamePhysics.AddHitLine(TankPocalypse.Model.Physics.HitLine)">
+            <summary>
+            Adds a new collision wall to the physics database.
+            </summary>
+            <param name="hl">Collision wall.</param>
+        </member>
+        <member name="M:TankPocalypse.Model.Interfaces.IGamePhysics.AddUnwalkableNode(TankPocalypse.Model.World.Node)">
+            <summary>
+            Creates collision walls arround the node.
+            </summary>
+            <param name="node">Unwalkable node.</param>
+        </member>
+        <member name="M:TankPocalypse.Model.Interfaces.IGamePhysics.UpdatePhysics">
+            <summary>
+            Calculates physics from the actual state of gamemodel.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.Model.Interfaces.IGameWorld">
+            <summary>
+            Gameworld interface.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameWorld.WorldGrid">
+            <summary>
+            Gets the Grid collection.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameWorld.GridWidth">
+            <summary>
+            Gets the width of the grid.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IGameWorld.GridHeight">
+            <summary>
+            Gets the height of the grid.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.Interfaces.IGameWorld.GetWorldDimensions">
+            <summary>
+            Returns the grid height and width.
+            </summary>
+            <returns>New point, which represents the height and width of the grid.</returns>
+        </member>
+        <member name="M:TankPocalypse.Model.Interfaces.IGameWorld.GetNodeByWorldCoordinates(System.Numerics.Vector2)">
+            <summary>
+            Returns a node from the grid by a world location parameter.
+            </summary>
+            <param name="worldLoc">Location to search for...</param>
+            <returns>Node from the grid.</returns>
+        </member>
+        <member name="M:TankPocalypse.Model.Interfaces.IGameWorld.SetupGrid(System.Collections.Generic.List{System.String})">
+            <summary>
+            Initialises the game world.
+            </summary>
+            <param name="mapData">Map data from file.</param>
+        </member>
+        <member name="T:TankPocalypse.Model.Interfaces.IReorderable">
+            <summary>
+            Reorderable interface for objects that are rendered in isometric space.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IReorderable.WorldPosition">
+            <summary>
+            Gets or sets the world position of the object.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IReorderable.GetObjectType">
+            <summary>
+            Gets the type of the object.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IReorderable.ObjectScreenStartPosition">
+            <summary>
+            Gets or sets the top left corner of the object through the viewport.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IReorderable.ObjectScreenEndPosition">
+            <summary>
+            Gets or sets the bottom right corner of the object through the viewport.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.Model.Interfaces.VehicleBehavior">
+            <summary>
+            Vehicle Behavior enum.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.Model.Interfaces.VehicleBehavior.Seeking">
+            <summary>
+            Seeking state.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.Model.Interfaces.VehicleBehavior.Attacking">
+            <summary>
+            Attackign state.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.Model.Interfaces.VehicleBehavior.Waiting">
+            <summary>
+            Waiting state.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.Model.Interfaces.VehicleBehavior.Moving">
+            <summary>
+            Moving state.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.Model.Interfaces.VehicleBehavior.Dead">
+            <summary>
+            Dead state.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.Model.Interfaces.VehicleMovementBehavior">
+            <summary>
+            Vehicle Movement behavior enum.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.Model.Interfaces.VehicleMovementBehavior.Standing">
+            <summary>
+            Standing state.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.Model.Interfaces.VehicleMovementBehavior.Moving">
+            <summary>
+            Moving state.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.Model.Interfaces.VehicleMovementBehavior.Slowing">
+            <summary>
+            Slowing down state.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.Model.Interfaces.VehicleMovementBehavior.Following">
+            <summary>
+            Following state.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.Model.Interfaces.IVehicle">
+            <summary>
+            Vehicle interface.
+            </summary>
+        </member>
+        <member name="E:TankPocalypse.Model.Interfaces.IVehicle.UnitKilled">
+            <summary>
+            UnitKilled event. Fires, when the vehicle is killed.
+            </summary>
+        </member>
+        <member name="E:TankPocalypse.Model.Interfaces.IVehicle.CreateAnimation">
+            <summary>
+            Create an animation event. Fires, when the unit shoots or blows up.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IVehicle.Behavior">
+            <summary>
+            Gets or sets the vehicles behavior.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IVehicle.MovementBehavior">
+            <summary>
+            Gets the vehicle movement behavior.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IVehicle.Px">
+            <summary>
+            Gets the X coordinate of position.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IVehicle.Py">
+            <summary>
+            Gets the Y coordinate of position.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IVehicle.Radius">
+            <summary>
+            Gets the radius of the vehicle.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IVehicle.Position">
+            <summary>
+            Gets or sets the vehicles porsition in world.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IVehicle.ObjectScreenStartPosition">
+            <summary>
+            Gets or sets the top left screen position of the object.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IVehicle.ObjectScreenEndPosition">
+            <summary>
+            Gets or sets the bottom right screen position of the object.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IVehicle.ScreenPosition">
+            <summary>
+            Gets or sets the vehicles position on the screen.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IVehicle.TurretDirectionNormal">
+            <summary>
+            Gets the normalised turret direction.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IVehicle.HeadingNormalFixed">
+            <summary>
+            Gets or sets the fixed heading normal value.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IVehicle.Velocity">
+            <summary>
+            Gets or sets the velocity of the vehicle.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IVehicle.IsMouseOver">
+            <summary>
+            Gets or sets a value indicating whether mouse is over the vehicle or not.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IVehicle.IsSelected">
+            <summary>
+            Gets a value indicating whether vehicle is selected or not.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IVehicle.IsRevealed">
+            <summary>
+            Gets a value indicating whether the vehicle is standing on a revealed node or not.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IVehicle.BodyIdx">
+            <summary>
+            Gets the body index value of the vehicle.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IVehicle.TurretIdx">
+            <summary>
+            Gets the turret index value of the vehicle.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IVehicle.Health">
+            <summary>
+            Gets the health of the vehicle.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IVehicle.AttackDamage">
+            <summary>
+            Gets the attack damage of the vehicle.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IVehicle.TeamId">
+            <summary>
+            Gets the teamID of the vehicle.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IVehicle.UniqueId">
+            <summary>
+            Gets the uniqueID of the vehicle.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IVehicle.ShootIdx">
+            <summary>
+            Gets the shooting animation index value.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IVehicle.ShootingStages">
+            <summary>
+            Gets the shooting animation stages of the vehicle.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Interfaces.IVehicle.TargetVehicle">
+            <summary>
+            Gets or sets the target vehicle.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.Interfaces.IVehicle.SetFlowField(TankPocalypse.Model.FlowField.Cell[0:,0:])">
+            <summary>
+            Sets the vehicles flowfield property value from the input.
+            </summary>
+            <param name="flowField">Input flowfield.</param>
+        </member>
+        <member name="M:TankPocalypse.Model.Interfaces.IVehicle.GetNodeIdxVehicleIsOn">
+            <summary>
+            Gets the node index which the vehicles is currently on.
+            </summary>
+            <returns>Node index value.</returns>
+        </member>
+        <member name="M:TankPocalypse.Model.Interfaces.IVehicle.ApplyBehaviors">
+            <summary>
+            This is the main method which keeps the vehicle "alive" every tick.
+            The method applies different kind of behaviors based on the vehicles actual behavioral state.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.Interfaces.IVehicle.UpdateFromNetwork(System.Numerics.Vector2,System.Int16,System.Int16,System.Byte)">
+            <summary>
+            This is the main network method, which updates the vehicles state from network data.
+            </summary>
+            <param name="netPos">Vehicle position from network.</param>
+            <param name="netBodyIdx">Vehicle BodyTexture index from network.</param>
+            <param name="netTurretIdx">Vehicle TurretTexture index from network.</param>
+            <param name="shoot">Vehicles shooting stage index from network.</param>
+        </member>
+        <member name="M:TankPocalypse.Model.Interfaces.IVehicle.SetHpFromNetwork(System.Byte)">
+            <summary>
+            Sets the health value from network data.
+            </summary>
+            <param name="netHP">Health from network.</param>
+        </member>
+        <member name="M:TankPocalypse.Model.Interfaces.IVehicle.SetPositionToMove(System.Numerics.Vector2,TankPocalypse.Model.FlowField.Cell[0:,0:],System.Boolean)">
+            <summary>
+            Sets the location where the vehicle would move.
+            </summary>
+            <param name="movePos">Target location.</param>
+            <param name="flowField">Flowfield to follow.</param>
+            <param name="multipleUnits">Bool parameter for multiple selected vehicles.</param>
+        </member>
+        <member name="M:TankPocalypse.Model.Interfaces.IVehicle.DecreaseHealth(TankPocalypse.Model.Interfaces.IVehicle)">
+            <summary>
+            Decreases the vehciles health.
+            </summary>
+            <param name="from">Enemy vehicle.</param>
+        </member>
+        <member name="M:TankPocalypse.Model.Interfaces.IVehicle.LoadFromSave(System.Numerics.Vector2,System.Byte,System.Int16,System.Int16,System.Numerics.Vector2,System.Numerics.Vector2)">
+            <summary>
+            Loads saved properties. When this method is called, it sets every property from the input.
+            </summary>
+            <param name="posVector">Vehicle position.</param>
+            <param name="heath">Vehicle health.</param>
+            <param name="bodyIdx">BodyTexture index.</param>
+            <param name="turretIdx">TurretTexture index.</param>
+            <param name="velocity">Vehicles velocity.</param>
+            <param name="turretNorm">Vehicles turret direction.</param>
+        </member>
+        <member name="T:TankPocalypse.Model.Physics.GamePhysics">
+            <summary>
+            This is the physics class. It handles every dynamic and static collision between every elements of the game.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.Physics.GamePhysics.#ctor(TankPocalypse.Model.Interfaces.IGameModel,TankPocalypse.Model.Interfaces.IGameWorld)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Model.Physics.GamePhysics"/> class.
+            </summary>
+            <param name="gameModel">GameModel entity.</param>
+            <param name="gameWorld">GameWorld entity.</param>
+        </member>
+        <member name="M:TankPocalypse.Model.Physics.GamePhysics.SetupWorldBounds">
+            <summary>
+            Sets up the static world collision walls.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.Physics.GamePhysics.AddHitLine(TankPocalypse.Model.Physics.HitLine)">
+            <summary>
+            Adds a new collision wall to the physics database.
+            </summary>
+            <param name="hl">Collision wall.</param>
+        </member>
+        <member name="M:TankPocalypse.Model.Physics.GamePhysics.AddUnwalkableNode(TankPocalypse.Model.World.Node)">
+            <summary>
+            Creates collision walls arround the node.
+            </summary>
+            <param name="node">Unwalkable node.</param>
+        </member>
+        <member name="M:TankPocalypse.Model.Physics.GamePhysics.UpdatePhysics">
+            <summary>
+            Calculates physics from the actual state of gamemodel.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.Model.Physics.HitLine">
+            <summary>
+            This is the hitline class, which servers as a collision wall inside the game world.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.Physics.HitLine.#ctor(System.Numerics.Vector2,System.Numerics.Vector2,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Model.Physics.HitLine"/> class.
+            </summary>
+            <param name="startPos">Start world location.</param>
+            <param name="endPos">End world location.</param>
+            <param name="radius">Thickness of wall.</param>
+        </member>
+        <member name="P:TankPocalypse.Model.Physics.HitLine.StartPos">
+            <summary>
+            Gets the start world location of hitline.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Physics.HitLine.EndPos">
+            <summary>
+            Gets the end world location of hitline.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Physics.HitLine.Radius">
+            <summary>
+            Gets the thickness of the hitline.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Physics.HitLine.StartX">
+            <summary>
+            Gets the X coordinate of start location.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Physics.HitLine.StartY">
+            <summary>
+            Gets the Y coordinate of start location.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Physics.HitLine.EndX">
+            <summary>
+            Gets the X coordinate of end location.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Physics.HitLine.EndY">
+            <summary>
+            Gets the Y coordinate of end location.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.Model.Units.Vehicle">
+            <summary>
+            This is the vehicle class.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.Units.Vehicle.#ctor(System.Byte,System.Numerics.Vector2,System.Single,TankPocalypse.Model.Interfaces.IGameWorld,TankPocalypse.Model.Interfaces.IFlowField,System.Collections.Generic.List{TankPocalypse.Model.Interfaces.IVehicle},System.Byte)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Model.Units.Vehicle"/> class.
+            </summary>
+            <param name="uniqueId">Unique id of vehicle.</param>
+            <param name="position">World location.</param>
+            <param name="radius">Radius of vehicle.</param>
+            <param name="gw">GameWorld entity.</param>
+            <param name="flowFieldController">FlowFieldController entity.</param>
+            <param name="vehicles">List of all vehicles.</param>
+            <param name="teamId">Vehicles team id.</param>
+        </member>
+        <member name="E:TankPocalypse.Model.Units.Vehicle.UnitKilled">
+            <summary>
+            UnitKilled event. Fires, when the vehicle is killed.
+            </summary>
+        </member>
+        <member name="E:TankPocalypse.Model.Units.Vehicle.CreateAnimation">
+            <summary>
+            Create an animation event. Fires, when the unit shoots or blows up.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.Position">
+            <summary>
+            Gets or sets the vehicles porsition in world.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.LastPosition">
+            <summary>
+            Gets the last correct position of the vehicle.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.Velocity">
+            <summary>
+            Gets or sets the velocity of the vehicle.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.Acceleration">
+            <summary>
+            Gets the acceleration of the vehicle.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.HeadingNormal">
+            <summary>
+            Gets the normalized heading vector of velocity.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.SteerForce">
+            <summary>
+            Gets the maximum steering force value.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.HeadingNormalFixed">
+            <summary>
+            Gets or sets the fixed heading normal value.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.HorizontalVector">
+            <summary>
+            Gets a horizontal default vector.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.WorldPosition">
+            <summary>
+            Gets or sets the worldposition of the vehcile. This is an interface requirement.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.DirectLocation">
+            <summary>
+            Gets the direct location to seek.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.Radius">
+            <summary>
+            Gets the radius of the vehicle.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.MaxSpeed">
+            <summary>
+            Gets the maximum speed value of the vehicle.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.MaxForce">
+            <summary>
+            Gets the maximum force of the vehicle.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.ObjectScreenStartPosition">
+            <summary>
+            Gets or sets the top left screen position of the object.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.ObjectScreenEndPosition">
+            <summary>
+            Gets or sets the bottom right screen position of the object.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.BodyIdx">
+            <summary>
+            Gets the body index value of the vehicle.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.TurretIdx">
+            <summary>
+            Gets the turret index value of the vehicle.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.ScreenPosition">
+            <summary>
+            Gets or sets the vehicles position on the screen.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.GetObjectType">
+            <summary>
+            Gets the object type of the vehicle.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.Px">
+            <summary>
+            Gets the X coordinate of position.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.Py">
+            <summary>
+            Gets the Y coordinate of position.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.TargetVehicle">
+            <summary>
+            Gets or sets the target vehicle.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.TeamId">
+            <summary>
+            Gets the teamID of the vehicle.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.Health">
+            <summary>
+            Gets the health of the vehicle.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.AttackDamage">
+            <summary>
+            Gets the attack damage of the vehicle.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.HeadingDirectionRounded">
+            <summary>
+            Gets the rounded heading direction.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.TurretDirectionNormal">
+            <summary>
+            Gets the normalised turret direction.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.TurretMaxRotationSpeed">
+            <summary>
+            Gets the maximum rotating speed of the turret.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.TurretIndex">
+            <summary>
+            Gets the index of the turret.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.Behavior">
+            <summary>
+            Gets or sets the vehicles behavior.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.MovementBehavior">
+            <summary>
+            Gets the vehicle movement behavior.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.IsFlowRouteRequested">
+            <summary>
+            Gets a value indicating whether flowfield route is requested or not.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.IsTurretOnTarget">
+            <summary>
+            Gets a value indicating whether turret is on target or not.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.IsSelected">
+            <summary>
+            Gets a value indicating whether vehicle is selected or not.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.IsMouseOver">
+            <summary>
+            Gets or sets a value indicating whether mouse is over the vehicle or not.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.IsRevealed">
+            <summary>
+            Gets a value indicating whether the vehicle is standing on a revealed node or not.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.IsReloaded">
+            <summary>
+            Gets a value indicating whether vehicle is reloaded after firing.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.ReloadTick">
+            <summary>
+            Gets the value of realod tick.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.UniqueId">
+            <summary>
+            Gets the uniqueID of the vehicle.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.ShootIdx">
+            <summary>
+            Gets the shooting animation index value.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.Units.Vehicle.ShootingStages">
+            <summary>
+            Gets the shooting animation stages of the vehicle.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.Units.Vehicle.CheckDirection">
+            <summary>
+            Updates the texture indexes of the vehicle based on body and turret directions.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.Units.Vehicle.FollowFlowField">
+            <summary>
+            Flowfield following method.
+            </summary>
+            <returns>Velocity vector.</returns>
+        </member>
+        <member name="M:TankPocalypse.Model.Units.Vehicle.CheckVisibility(TankPocalypse.Model.World.Node,TankPocalypse.Model.World.Node)">
+            <summary>
+            Checks if end node is visible from start, which means there is a direct sight from start to end node without any blocking obstacles.
+            </summary>
+            <param name="start">Start node.</param>
+            <param name="end">End node.</param>
+            <returns>True if there is direct sight and false othervise.</returns>
+        </member>
+        <member name="M:TankPocalypse.Model.Units.Vehicle.AttackingBehavior">
+            <summary>
+            Attacking behavior method. If being called, the method applies an attacking behavior on vehicle.
+            </summary>
+            <returns>Velocity vector.</returns>
+        </member>
+        <member name="M:TankPocalypse.Model.Units.Vehicle.ShootTarget">
+            <summary>
+            Shoot at target method.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.Units.Vehicle.WaitingBehavior">
+            <summary>
+            Waiting behavior. Applies a waiting behavior if method being called.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.Units.Vehicle.FindTarget(System.Collections.Generic.List{TankPocalypse.Model.Interfaces.IVehicle})">
+            <summary>
+            Target finding method. Returns a target to attack if any found.
+            </summary>
+            <param name="otherVehicles">List of every vehicle ingame.</param>
+            <returns>Target vehicle or null.</returns>
+        </member>
+        <member name="M:TankPocalypse.Model.Units.Vehicle.MovingBehavior">
+            <summary>
+            Moving behavior method. Applies moving behavior on vehicle.
+            </summary>
+            <returns>Velocity vector.</returns>
+        </member>
+        <member name="M:TankPocalypse.Model.Units.Vehicle.RequestFlowRouteToTarget(System.Numerics.Vector2)">
+            <summary>
+            Requests new flowfield to follow.
+            </summary>
+            <param name="movePos">Target location to move.</param>
+        </member>
+        <member name="M:TankPocalypse.Model.Units.Vehicle.SetPositionToMove(System.Numerics.Vector2,TankPocalypse.Model.FlowField.Cell[0:,0:],System.Boolean)">
+            <summary>
+            Sets the location where the vehicle would move.
+            </summary>
+            <param name="movePos">Target location.</param>
+            <param name="flowField">Flowfield to follow.</param>
+            <param name="multipleUnits">Bool parameter for multiple selected vehicles.</param>
+        </member>
+        <member name="M:TankPocalypse.Model.Units.Vehicle.SeekTargetLocation(System.Numerics.Vector2)">
+            <summary>
+            Seeks the target location.
+            </summary>
+            <param name="target">Target location.</param>
+            <returns>Velocity vector.</returns>
+        </member>
+        <member name="M:TankPocalypse.Model.Units.Vehicle.SeekLocation(System.Numerics.Vector2)">
+            <summary>
+            Seeks the target location. Includes the SlowingDown behavioral movement method.
+            </summary>
+            <param name="target">Target location.</param>
+            <returns>Velocity vector.</returns>
+        </member>
+        <member name="M:TankPocalypse.Model.Units.Vehicle.SlowDown(System.Numerics.Vector2)">
+            <summary>
+            The method applies a decelerating movement towards the target input.
+            </summary>
+            <param name="targetPos">Target location.</param>
+            <returns>Velocity vector.</returns>
+        </member>
+        <member name="M:TankPocalypse.Model.Units.Vehicle.UpdateFromNetwork(System.Numerics.Vector2,System.Int16,System.Int16,System.Byte)">
+            <summary>
+            This is the main network method, which updates the vehicles state from network data.
+            </summary>
+            <param name="netPos">Vehicle position from network.</param>
+            <param name="netBodyIdx">Vehicle BodyTexture index from network.</param>
+            <param name="netTurretIdx">Vehicle TurretTexture index from network.</param>
+            <param name="shoot">Vehicles shooting stage index from network.</param>
+        </member>
+        <member name="M:TankPocalypse.Model.Units.Vehicle.ApplyBehaviors">
+            <summary>
+            This is the main method which keeps the vehicle "alive" every tick.
+            The method applies different kind of behaviors based on the vehicles actual behavioral state.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.Units.Vehicle.SetHpFromNetwork(System.Byte)">
+            <summary>
+            Sets the health value from network data.
+            </summary>
+            <param name="netHP">Health from network.</param>
+        </member>
+        <member name="M:TankPocalypse.Model.Units.Vehicle.Update">
+            <summary>
+            Updates the vehicle state.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.Units.Vehicle.ApplyForce(System.Numerics.Vector2)">
+            <summary>
+            Adds force to the acceleration.
+            </summary>
+            <param name="force">Force to add.</param>
+        </member>
+        <member name="M:TankPocalypse.Model.Units.Vehicle.DecreaseHealth(TankPocalypse.Model.Interfaces.IVehicle)">
+            <summary>
+            Decreases the vehciles health.
+            </summary>
+            <param name="from">Enemy vehicle.</param>
+        </member>
+        <member name="M:TankPocalypse.Model.Units.Vehicle.SetSelected">
+            <summary>
+            Sets the vehicle selected.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.Units.Vehicle.SetDeselected">
+            <summary>
+            Sets the vehicle deselected.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.Units.Vehicle.GetNodeIdxVehicleIsOn">
+            <summary>
+            Gets the node index which the vehicles is currently on.
+            </summary>
+            <returns>Node index value.</returns>
+        </member>
+        <member name="M:TankPocalypse.Model.Units.Vehicle.SetFlowField(TankPocalypse.Model.FlowField.Cell[0:,0:])">
+            <summary>
+            Sets the vehicles flowfield property value from the input.
+            </summary>
+            <param name="flowField">Input flowfield.</param>
+        </member>
+        <member name="M:TankPocalypse.Model.Units.Vehicle.UpdateTurret">
+            <summary>
+            Updates the turrets state.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.Units.Vehicle.LoadFromSave(System.Numerics.Vector2,System.Byte,System.Int16,System.Int16,System.Numerics.Vector2,System.Numerics.Vector2)">
+            <summary>
+            Loads saved properties. When this method is called, it sets every property from the input.
+            </summary>
+            <param name="posVector">Vehicle position.</param>
+            <param name="heath">Vehicle health.</param>
+            <param name="bodyIdx">BodyTexture index.</param>
+            <param name="turretIdx">TurretTexture index.</param>
+            <param name="velocity">Vehicles velocity.</param>
+            <param name="turretNorm">Vehicles turret direction.</param>
+        </member>
+        <member name="M:TankPocalypse.Model.Units.Vehicle.ReloadTurret">
+            <summary>
+            Reloads the turret after shooting and sets turret animation index.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.Model.World.GameWorld">
+            <summary>
+            This is the gameworld class. It stores a collection of nodes which builds up the game world.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.World.GameWorld.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Model.World.GameWorld"/> class.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.World.GameWorld.GridWidth">
+            <summary>
+            Gets the width of the grid.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.World.GameWorld.GridHeight">
+            <summary>
+            Gets the height of the grid.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.World.GameWorld.WorldGrid">
+            <summary>
+            Gets the Grid collection.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.World.GameWorld.SetupGrid(System.Collections.Generic.List{System.String})">
+            <summary>
+            Initialises the game world.
+            </summary>
+            <param name="mapData">Map data from file.</param>
+        </member>
+        <member name="M:TankPocalypse.Model.World.GameWorld.GetWorldDimensions">
+            <summary>
+            Returns the grid height and width.
+            </summary>
+            <returns>New point, which represents the height and width of the grid.</returns>
+        </member>
+        <member name="M:TankPocalypse.Model.World.GameWorld.GetNodeByWorldCoordinates(System.Numerics.Vector2)">
+            <summary>
+            Returns a node from the grid by a world location parameter.
+            </summary>
+            <param name="worldLoc">Location to search for...</param>
+            <returns>Node from the grid.</returns>
+        </member>
+        <member name="T:TankPocalypse.Model.World.Node">
+            <summary>
+            The node class represents a tile on the grid.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Model.World.Node.#ctor(System.Int32,System.Int32,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Model.World.Node"/> class.
+            </summary>
+            <param name="x">X index on the grid.</param>
+            <param name="y">Y index on the grid.</param>
+            <param name="nodeType">Type of the node.</param>
+        </member>
+        <member name="P:TankPocalypse.Model.World.Node.GridIdx">
+            <summary>
+            Gets the nodes index value on the grid.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.World.Node.IsVisible">
+            <summary>
+            Gets or sets a value indicating whether the node is visible or not.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.World.Node.IsRevealed">
+            <summary>
+            Gets or sets a value indicating whether the node is revealed or not.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.World.Node.IsWalkable">
+            <summary>
+            Gets or sets a value indicating whether the node is walkable or not.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.World.Node.NodeType">
+            <summary>
+            Gets the type of the node.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.World.Node.WorldPosition">
+            <summary>
+            Gets or sets the world location of the node.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.World.Node.GetObjectType">
+            <summary>
+            Gets the type of the object.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.World.Node.ScreenPosition">
+            <summary>
+            Gets or sets the screen position coordinates of the node.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.World.Node.ObjectScreenStartPosition">
+            <summary>
+            Gets or sets the starting location of the node drawing on the screen.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.World.Node.ObjectScreenEndPosition">
+            <summary>
+            Gets or sets the end location of the node drawing on the screen.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.World.Node.TeamNodeId">
+            <summary>
+            Gets the identifier number, which represents to which team the node belongs to.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Model.World.Node.NodeCenterLocation">
+            <summary>
+            Gets or sets the center location of the node in the world.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="TankPocalypse.WPF.UI.HighScoreMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TankPocalypse.WPF.UI"
+             xmlns:uiclasses="clr-namespace:TankPocalypse.Logic.UIClasses;assembly=TankPocalypse.Logic"
+             mc:Ignorable="d" 
+             Loaded="HighScoreMenu_OnLoaded"
+             d:DesignHeight="750" d:DesignWidth="1280">
+    <UserControl.Resources>
+        <Style x:Key="BlueNeonStyle" TargetType="Button">
+            <Setter Property="FontFamily" Value="Lucida Sans Unicode"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="Border1" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <ContentPresenter.Effect>
+                                    <DropShadowEffect x:Name="Effect" BlurRadius="20" ShadowDepth="0" Opacity="1" Color="Aqua"/>
+                                </ContentPresenter.Effect>
+                            </ContentPresenter>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="Border1">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="{Binding Path=ButtonHover}" />
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="False">
+                                <Setter Property="Background" TargetName="Border1">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="{Binding Path=ButtonDefault}" />
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Foreground" Value="Aqua"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="NeonLabelStyle" TargetType="Label">
+            <Setter Property="FontFamily" Value="Lucida Sans Unicode"/>
+            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="Foreground" Value="Aqua"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Label">
+                        <ContentPresenter>
+                            <ContentPresenter.Effect>
+                                <DropShadowEffect x:Name="Effect" BlurRadius="20" ShadowDepth="0" Opacity="1" Color="Aqua"/>
+                            </ContentPresenter.Effect>
+                        </ContentPresenter>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <DataTemplate x:Key="ProfileItemTemplate" DataType="{x:Type uiclasses:UIProfile}">
+            <StackPanel Orientation="Vertical">
+                <Label Content="{Binding Path=UserName}" Foreground="AliceBlue" HorizontalAlignment="Center" FontSize="38"/>
+                <Label Content="{Binding Path=Scores}" Style="{StaticResource NeonLabelStyle}" HorizontalAlignment="Center" FontSize="30"/>
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <Image Source="{Binding Path=Background}"/>
+        <Button Style="{StaticResource BlueNeonStyle}" Command="{Binding Path=MainVm.MainMenuCommand}" Content="BACK" FontSize="30" Margin="491,619,491,0" VerticalAlignment="Top" Height="58"/>
+        <ListBox Background="Transparent" HorizontalContentAlignment="Center" Focusable="False" ItemsSource="{Binding Path=Profiles}" ItemTemplate="{StaticResource ProfileItemTemplate}" Margin="385,122,385,0" Height="472" VerticalAlignment="Top">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="Focusable" Value="False"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
+        <Label Style="{StaticResource NeonLabelStyle}" Content="HIGH SCORES" FontSize="40" HorizontalAlignment="Center" Margin="385,50,385,0" VerticalAlignment="Top" Height="67"/>
+    </Grid>
+</UserControl>

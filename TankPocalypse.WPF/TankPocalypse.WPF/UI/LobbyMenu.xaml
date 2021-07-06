@@ -1,0 +1,112 @@
+﻿<UserControl x:Class="TankPocalypse.WPF.UI.LobbyMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TankPocalypse.WPF.UI"
+             xmlns:uiclasses="clr-namespace:TankPocalypse.Logic.UIClasses;assembly=TankPocalypse.Logic"
+             mc:Ignorable="d" 
+             Loaded="LobbyMenu_OnLoaded"
+             d:DesignHeight="750" d:DesignWidth="1280">
+    <UserControl.Resources>
+        <DataTemplate x:Key="ProfileItemTemplate" DataType="{x:Type uiclasses:UIProfile}">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="{Binding Path=UserName}"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="MapItemTemplate" DataType="{x:Type uiclasses:UIMap}">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="{Binding Path=MapName}"/>
+            </StackPanel>
+        </DataTemplate>
+        <Style x:Key="BlueNeonStyle" TargetType="Button">
+            <Setter Property="FontFamily" Value="Lucida Sans Unicode"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="Border1" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <ContentPresenter.Effect>
+                                    <DropShadowEffect x:Name="Effect" BlurRadius="20" ShadowDepth="0" Opacity="1" Color="Aqua"/>
+                                </ContentPresenter.Effect>
+                            </ContentPresenter>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="Border1">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="{Binding Path=ButtonHover}" />
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="False">
+                                <Setter Property="Background" TargetName="Border1">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="{Binding Path=ButtonDefault}" />
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Foreground" Value="Aqua"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="NeonLabelStyle" TargetType="Label">
+            <Setter Property="FontFamily" Value="Lucida Sans Unicode"/>
+            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="Foreground" Value="Aqua"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Label">
+                        <ContentPresenter>
+                            <ContentPresenter.Effect>
+                                <DropShadowEffect x:Name="Effect" BlurRadius="20" ShadowDepth="0" Opacity="1" Color="Aqua"/>
+                            </ContentPresenter.Effect>
+                        </ContentPresenter>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="UserLabelStyle" TargetType="Label">
+            <Setter Property="FontFamily" Value="Lucida Sans Unicode"/>
+            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="Foreground" Value="AliceBlue"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="{Binding Path=LocalUserBg}"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Label">
+                        <ContentPresenter>
+                            <ContentPresenter.Effect>
+                                <DropShadowEffect x:Name="Effect" BlurRadius="10" ShadowDepth="0" Opacity="1" Color="AliceBlue"/>
+                            </ContentPresenter.Effect>
+                        </ContentPresenter>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid Background="Black">
+        <Image Source="{Binding Path=Background}"/>
+        <Label Style="{StaticResource NeonLabelStyle}" Content="LOBBY" FontSize="35" HorizontalAlignment="Left" Margin="119,43,0,0" VerticalAlignment="Top" Height="52" Width="208"/>
+        <Label Style="{StaticResource UserLabelStyle}" Content="{Binding Path=MainVm.GlobalProfile.UserName}" ContentStringFormat="Local user: {0}" Margin="119,129,0,0" Height="60" VerticalAlignment="Top" HorizontalAlignment="Left" Width="600">
+        </Label>
+        <Label Style="{StaticResource NeonLabelStyle}"  Background="{Binding Path=NetworkUserBg}"  Content="{Binding Path=MainVm.NetworkProfile.UserName}" ContentStringFormat="Network user: {0}" Margin="119,208,0,0" Height="60" VerticalAlignment="Top" HorizontalAlignment="Left" Width="600"/>
+        <Label Style="{StaticResource NeonLabelStyle}" Content="{Binding Path=MainVm.GlobalMap.MapName}" ContentStringFormat="Map Name: {0}" Margin="119,294,561,0" Height="38" VerticalAlignment="Top"/>
+        <Label Style="{StaticResource NeonLabelStyle}" Content="{Binding Path=MainVm.GlobalSaveFile.SaveName}" Foreground="AliceBlue" ContentStringFormat="Save selected: {0}" Margin="119,0,137,0" Height="38" VerticalAlignment="Center"/>
+        <Button Style="{StaticResource BlueNeonStyle}" Command="{Binding Path=MainVm.MainMenuCommand}" Content="LEAVE LOBBY" FontSize="30" HorizontalAlignment="Left" Margin="119,423,0,0" VerticalAlignment="Top" Height="58" Width="298"/>
+        <Button Style="{StaticResource BlueNeonStyle}"  x:Name="StartButton" Command="{Binding Path=StartGameCommand}" Content="START GAME" FontSize="30" HorizontalAlignment="Left" Margin="845,424,0,0" VerticalAlignment="Top" Height="58" Width="298"/>
+        <Button Style="{StaticResource BlueNeonStyle}"  x:Name="ReadyButton" Command="{Binding Path=ReadySetCommand}" Content="READY" FontSize="30" HorizontalAlignment="Left" Margin="845,198,0,0" VerticalAlignment="Top" Height="58" Width="298"/>
+        <Button Style="{StaticResource BlueNeonStyle}"  x:Name="LoadButton" Command="{Binding Path=SelectSaveToLoad}" Content="LOAD SAVE" FontSize="30" HorizontalAlignment="Left" Margin="845,121,0,0" VerticalAlignment="Top" Height="58" Width="298"/>
+        <Label Style="{StaticResource NeonLabelStyle}"  Content="{Binding Path=UserReadyText}" HorizontalAlignment="Left" Margin="650,129,0,0" VerticalAlignment="Top" Width="220"/>
+        <Label Style="{StaticResource NeonLabelStyle}"  Content="{Binding Path=MainVm.NetworkUserReadyText}" HorizontalAlignment="Left" Margin="650,208,0,0" VerticalAlignment="Top" Width="220"/>
+        <ComboBox Background="Transparent" x:Name="UnitCountComboBox" ItemsSource="{Binding Path=AvailableUnitCount}" SelectedItem="{Binding Path=MainVm.GlobalUnitCount}" HorizontalAlignment="Left" Margin="747,439,0,0" VerticalAlignment="Top" Width="46"/>
+        <Label Style="{StaticResource NeonLabelStyle}" x:Name="UnitCountLabel" Content="{Binding Path=MainVm.GlobalUnitCount}"  HorizontalAlignment="Left" Margin="736,426,0,0" VerticalAlignment="Top" Width="134"/>
+        <Label Style="{StaticResource NeonLabelStyle}" FontSize="24" Content="Selected unit count:" HorizontalAlignment="Left" Margin="474,431,0,0" VerticalAlignment="Top" Width="242"/>
+    </Grid>
+</UserControl>

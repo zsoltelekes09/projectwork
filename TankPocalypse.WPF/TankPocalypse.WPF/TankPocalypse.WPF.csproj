@@ -1,0 +1,89 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>TankPocalypse.WPF.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\Background\client_menu_bg_rdy.png" />
+    <None Remove="Images\Background\game_view_bg_2.png" />
+    <None Remove="Images\Background\game_view_bg_rdy.png" />
+    <None Remove="Images\Background\highscore_menu_bg_rdy.png" />
+    <None Remove="Images\Background\load_menu_bg_rdy.png" />
+    <None Remove="Images\Background\lobby_menu_bg_rdy.png" />
+    <None Remove="Images\Background\main_bg.png" />
+    <None Remove="Images\Background\main_bg_2.png" />
+    <None Remove="Images\Background\main_bg_3.png" />
+    <None Remove="Images\Background\main_menu_bg.png" />
+    <None Remove="Images\Background\new_profile_bg.png" />
+    <None Remove="Images\Background\new_profile_bg_2.png" />
+    <None Remove="Images\Background\new_profile_bg_final.png" />
+    <None Remove="Images\Background\profile_menu_bg_rdy.png" />
+    <None Remove="Images\Background\server_menu_bg_rdy.png" />
+    <None Remove="Images\Button\buttonDefault.png" />
+    <None Remove="Images\Button\button_static_final.png" />
+    <None Remove="Images\Button\button_static_rdy.png" />
+    <None Remove="Images\Button\red_team_textbg.png" />
+    <None Remove="Images\Button\tmpButton_hover_def.png" />
+    <None Remove="Images\Button\tmpButton_stationary.png" />
+    <None Remove="Images\Cursors\attack.cur" />
+    <None Remove="Images\Cursors\enemy.cur" />
+    <None Remove="Images\Cursors\move.cur" />
+    <None Remove="Images\Cursors\none.cur" />
+    <None Remove="Images\Cursors\select.cur" />
+    <None Remove="UI\bg_img.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Background\client_menu_bg_rdy.png" />
+    <EmbeddedResource Include="Images\Background\game_view_bg_2.png" />
+    <EmbeddedResource Include="Images\Background\game_view_bg_rdy.png" />
+    <EmbeddedResource Include="Images\Background\highscore_menu_bg_rdy.png" />
+    <EmbeddedResource Include="Images\Background\load_menu_bg_rdy.png" />
+    <EmbeddedResource Include="Images\Background\lobby_menu_bg_rdy.png" />
+    <EmbeddedResource Include="Images\Background\main_bg.png" />
+    <EmbeddedResource Include="Images\Background\main_bg_2.png" />
+    <EmbeddedResource Include="Images\Background\main_bg_3.png" />
+    <EmbeddedResource Include="Images\Background\main_menu_bg.png" />
+    <EmbeddedResource Include="Images\Background\new_profile_bg.png" />
+    <EmbeddedResource Include="Images\Background\new_profile_bg_2.png" />
+    <EmbeddedResource Include="Images\Background\new_profile_bg_final.png" />
+    <EmbeddedResource Include="Images\Background\profile_menu_bg_rdy.png" />
+    <EmbeddedResource Include="Images\Background\server_menu_bg_rdy.png" />
+    <EmbeddedResource Include="Images\Button\buttonDefault.png" />
+    <EmbeddedResource Include="Images\Button\button_static_final.png" />
+    <EmbeddedResource Include="Images\Button\button_static_rdy.png" />
+    <EmbeddedResource Include="Images\Button\red_team_textbg.png" />
+    <EmbeddedResource Include="Images\Button\tmpButton_hover_def.png" />
+    <EmbeddedResource Include="Images\Button\tmpButton_stationary.png" />
+    <EmbeddedResource Include="Images\Cursors\attack.cur" />
+    <EmbeddedResource Include="Images\Cursors\enemy.cur" />
+    <EmbeddedResource Include="Images\Cursors\move.cur" />
+    <EmbeddedResource Include="Images\Cursors\none.cur" />
+    <EmbeddedResource Include="Images\Cursors\select.cur" />
+    <EmbeddedResource Include="UI\bg_img.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommonServiceLocator" Version="2.0.6" />
+    <PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TankPocalypse.Renderer\TankPocalypse.Renderer.csproj" />
+  </ItemGroup>
+
+</Project>

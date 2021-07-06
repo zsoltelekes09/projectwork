@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<Name>SmallMap</Name>
+	<Data  Height="8"  Width="8">
+		<Row>00000000</Row>
+		<Row>00000000</Row>
+		<Row>00000000</Row>
+		<Row>88000099</Row>
+		<Row>88000099</Row>
+		<Row>00000000</Row>
+		<Row>00000000</Row>
+		<Row>00000000</Row>
+	</Data>
+</Map>

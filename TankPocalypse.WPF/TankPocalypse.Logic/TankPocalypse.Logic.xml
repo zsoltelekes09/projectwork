@@ -1,0 +1,1212 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TankPocalypse.Logic</name>
+    </assembly>
+    <members>
+        <member name="T:TankPocalypse.Logic.GameInputController">
+            <summary>
+            Game input controller class. Handles all input events necessary for gameplay.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameInputController.#ctor(TankPocalypse.Model.Interfaces.IGameModel,TankPocalypse.Model.Interfaces.IGameWorld,TankPocalypse.Model.Interfaces.IFlowField)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Logic.GameInputController"/> class.
+            </summary>
+            <param name="gameModel">GameModel entity.</param>
+            <param name="gameWorld">GameWorld entity.</param>
+            <param name="flowField">FlowField entity.</param>
+        </member>
+        <member name="E:TankPocalypse.Logic.GameInputController.ScreenOffsetChanged">
+            <summary>
+            Screen offset changed event.
+            </summary>
+        </member>
+        <member name="E:TankPocalypse.Logic.GameInputController.ScreenZoomRateChanged">
+            <summary>
+            Screen zoomrate changed event.
+            </summary>
+        </member>
+        <member name="E:TankPocalypse.Logic.GameInputController.RequestNewMousePosition">
+            <summary>
+            Nem mouse position requester event.
+            </summary>
+        </member>
+        <member name="E:TankPocalypse.Logic.GameInputController.ChangeCursor">
+            <summary>
+            Change cursor event.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameInputController.RefreshKeys">
+            <summary>
+            Handels input methods inside logic...
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameInputController.SubscribeToCursorChangedEvent(System.Action{System.String})">
+            <summary>
+            Subscribes for the cursor changed event.
+            </summary>
+            <param name="method">Input method to subsribe.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameInputController.SubscribeToRequestMousePosEvent(System.Action)">
+            <summary>
+            Mouse position request method subscriber.
+            </summary>
+            <param name="method">Request method.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameInputController.SubscribeToCanvasMovedEvent(System.Action{System.Single,System.Single})">
+            <summary>
+            Canvas moved event subscriber method.
+            </summary>
+            <param name="method">Canvas new dimentsion.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameInputController.SubscribeToZoomRateChangedEvent(System.Action{System.Int16})">
+            <summary>
+            ZoomRate changed event subscriber method.
+            </summary>
+            <param name="method">Input method.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameInputController.KeyDown(System.Object,System.Windows.Input.KeyEventArgs)">
+            <summary>
+            Key down event method.
+            </summary>
+            <param name="sender">Event sender object.</param>
+            <param name="e">Event data.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameInputController.KeyUp(System.Object,System.Windows.Input.KeyEventArgs)">
+            <summary>
+            Key up event method.
+            </summary>
+            <param name="sender">Event sender object.</param>
+            <param name="e">Event data.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameInputController.MouseLeftButtonDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Mouse left button down.
+            </summary>
+            <param name="sender">Sender object.</param>
+            <param name="e">Sent data.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameInputController.MouseWheelEvent(System.Object,System.Windows.Input.MouseWheelEventArgs)">
+            <summary>
+            Mouse wheel rolled event method.
+            </summary>
+            <param name="sender">Event sender object.</param>
+            <param name="e">Event data.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameInputController.MouseButtonDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Mouse button down method.
+            </summary>
+            <param name="sender">Sender object.</param>
+            <param name="e">Sent data.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameInputController.MouseButtonUp(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Mouse button up method.
+            </summary>
+            <param name="sender">Event sender object.</param>
+            <param name="e">Sent data.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameInputController.MouseRightButtonDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Mouse right button down.
+            </summary>
+            <param name="sender">Sender object.</param>
+            <param name="e">Sent data.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameInputController.MouseLeftButtonUp(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Mouse left button up.
+            </summary>
+            <param name="sender">Sender object.</param>
+            <param name="e">Sent data.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameInputController.MouseRightButtonUp(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Mouse right button up.
+            </summary>
+            <param name="sender">Sender object.</param>
+            <param name="e">Sent data.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameInputController.SetMousePos(System.Double,System.Double)">
+            <summary>
+            Sets mouse position.
+            </summary>
+            <param name="mouseX">Mouse x coordinate on window.</param>
+            <param name="mouseY">Mouse y coordinate on window.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameInputController.ApplyWorldCenterCameraPosition(System.Int32,System.Int32)">
+            <summary>
+            Sets the view offset to the center of the map.
+            </summary>
+            <param name="winX">Window x size.</param>
+            <param name="winY">Window y size.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameInputController.UpdateWindowDimensions(System.Object,System.Windows.SizeChangedEventArgs)">
+            <summary>
+            Subscriber event to windows sizechanged event.
+            </summary>
+            <param name="sender">Sender object.</param>
+            <param name="e">Sent data.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameInputController.ScalarProjectionOnVector(System.Numerics.Vector2,System.Numerics.Vector2)">
+            <summary>
+            Calculates a scalar projection of vectorB on vectorA.
+            </summary>
+            <param name="vecA">First vector.</param>
+            <param name="vecB">Second vector.</param>
+            <returns>Scalar projection vector.</returns>
+        </member>
+        <member name="T:TankPocalypse.Logic.GameLogic">
+            <summary>
+            GameLogic class. Keeps up the life cycle of the game.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameLogic.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Logic.GameLogic"/> class.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameLogic.#ctor(TankPocalypse.Model.Interfaces.IGameWorld,TankPocalypse.Repository.Interfaces.IGameRepository,TankPocalypse.Model.Interfaces.IGameModel,TankPocalypse.Logic.Interfaces.IGameInputController,TankPocalypse.Model.Interfaces.IGamePhysics,TankPocalypse.Model.Interfaces.IFlowField)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Logic.GameLogic"/> class.
+            </summary>
+            <param name="gameWorld">GameWorld entiry.</param>
+            <param name="gameRepository">GameRepository entity.</param>
+            <param name="gameModel">GameModel entity.</param>
+            <param name="gameInputController">GameInputController entity.</param>
+            <param name="gamePhysics">GamePhysics entity.</param>
+            <param name="flowField">FlowField entity.</param>
+        </member>
+        <member name="P:TankPocalypse.Logic.GameLogic.UdpRunning">
+            <summary>
+            Gets or sets a value indicating whether UdpRunning.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Logic.GameLogic.ConnectionLost">
+            <inheritdoc/>
+        </member>
+        <member name="P:TankPocalypse.Logic.GameLogic.GameOver">
+            <inheritdoc/>
+        </member>
+        <member name="P:TankPocalypse.Logic.GameLogic.IsGamePaused">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameLogic.StartUdpClient(System.String)">
+            <summary>
+            Starts udp client.
+            </summary>
+            <param name="ip">ip.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameLogic.StopUdpClient">
+            <summary>
+            Stops udp client.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameLogic.StopUdpServer">
+            <summary>
+            stops udp server.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameLogic.StartUdpServer">
+            <summary>
+            Starts upd server.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameLogic.StartNewGame(TankPocalypse.Logic.Interfaces.IUIMap,System.Byte)">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameLogic.LoadGame(TankPocalypse.Logic.Interfaces.IUISavedGame)">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameLogic.GetAllSavedGames">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameLogic.SetGlobalProfile(TankPocalypse.Logic.Interfaces.IUIProfile)">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameLogic.GetAllProfiles">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameLogic.DeleteProfile(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameLogic.AddNewProfile(TankPocalypse.Logic.Interfaces.IUIProfile)">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameLogic.GetAllMaps">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameLogic.StartGame">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameLogic.SubscribeInvalidateMethod(System.Action)">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameLogic.SubscribeToGameEndedEvent(System.Action)">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameLogic.SaveGame">
+            <summary>
+            SaveGame.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameLogic.StartSessionTimer">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameLogic.PauseSessionTimer">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameLogic.SetTeamID(System.Byte)">
+            <summary>
+            SetTeamid.
+            </summary>
+            <param name="id">id.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameLogic.SetAppAsServer">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameLogic.StopGameTimer">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameLogic.DeleteEverything">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.Logic.GameLogic.PauseGame">
+            <inheritdoc/>
+        </member>
+        <member name="T:TankPocalypse.Logic.Interfaces.IGameInputController">
+            <summary>
+            GameInputController interface.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameInputController.ApplyWorldCenterCameraPosition(System.Int32,System.Int32)">
+            <summary>
+            Sets the view offset to the center of the map.
+            </summary>
+            <param name="winX">Window x size.</param>
+            <param name="winY">Window y size.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameInputController.KeyDown(System.Object,System.Windows.Input.KeyEventArgs)">
+            <summary>
+            Key down event method.
+            </summary>
+            <param name="sender">Event sender object.</param>
+            <param name="e">Event data.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameInputController.KeyUp(System.Object,System.Windows.Input.KeyEventArgs)">
+            <summary>
+            Key up event method.
+            </summary>
+            <param name="sender">Event sender object.</param>
+            <param name="e">Event data.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameInputController.MouseWheelEvent(System.Object,System.Windows.Input.MouseWheelEventArgs)">
+            <summary>
+            Mouse wheel rolled event method.
+            </summary>
+            <param name="sender">Event sender object.</param>
+            <param name="e">Event data.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameInputController.MouseButtonDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Mouse button down method.
+            </summary>
+            <param name="sender">Sender object.</param>
+            <param name="e">Sent data.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameInputController.MouseButtonUp(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Mouse button up method.
+            </summary>
+            <param name="sender">Event sender object.</param>
+            <param name="e">Sent data.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameInputController.MouseLeftButtonDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Mouse left button down.
+            </summary>
+            <param name="sender">Sender object.</param>
+            <param name="e">Sent data.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameInputController.MouseRightButtonDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Mouse right button down.
+            </summary>
+            <param name="sender">Sender object.</param>
+            <param name="e">Sent data.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameInputController.MouseLeftButtonUp(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Mouse right button up.
+            </summary>
+            <param name="sender">Sender object.</param>
+            <param name="e">Sent data.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameInputController.MouseRightButtonUp(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Mouse right button up.
+            </summary>
+            <param name="sender">Sender object.</param>
+            <param name="e">Sent data.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameInputController.SetMousePos(System.Double,System.Double)">
+            <summary>
+            Sets mouse position.
+            </summary>
+            <param name="mouseX">Mouse x coordinate on window.</param>
+            <param name="mouseY">Mouse y coordinate on window.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameInputController.SubscribeToRequestMousePosEvent(System.Action)">
+            <summary>
+            Mouse position request method subscriber.
+            </summary>
+            <param name="method">Request method.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameInputController.SubscribeToCanvasMovedEvent(System.Action{System.Single,System.Single})">
+            <summary>
+            Canvas moved event subscriber method.
+            </summary>
+            <param name="method">Canvas new dimentsion.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameInputController.SubscribeToZoomRateChangedEvent(System.Action{System.Int16})">
+            <summary>
+            ZoomRate changed event subscriber method.
+            </summary>
+            <param name="method">Input method.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameInputController.RefreshKeys">
+            <summary>
+            Handels input methods inside logic...
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameInputController.UpdateWindowDimensions(System.Object,System.Windows.SizeChangedEventArgs)">
+            <summary>
+            Subscriber event to windows sizechanged event.
+            </summary>
+            <param name="sender">Sender object.</param>
+            <param name="e">Sent data.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameInputController.SubscribeToCursorChangedEvent(System.Action{System.String})">
+            <summary>
+            Subscribes for the cursor changed event.
+            </summary>
+            <param name="method">Input method to subsribe.</param>
+        </member>
+        <member name="T:TankPocalypse.Logic.Interfaces.IGameLogic">
+            <summary>
+            GameLogic interface.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Logic.Interfaces.IGameLogic.IsGamePaused">
+            <summary>
+            Gets a value indicating whether game is paused or not.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Logic.Interfaces.IGameLogic.ConnectionLost">
+            <summary>
+            Gets or sets a value indicating whether connection is lost or not.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Logic.Interfaces.IGameLogic.GameOver">
+            <summary>
+            Gets or sets a value indicating whether game is over or not.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameLogic.StartNewGame(TankPocalypse.Logic.Interfaces.IUIMap,System.Byte)">
+            <summary>
+            Stats a newgame.
+            </summary>
+            <param name="mapToLoad">Map data.</param>
+            <param name="unitCount">Unit count.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameLogic.LoadGame(TankPocalypse.Logic.Interfaces.IUISavedGame)">
+            <summary>
+            Load the game.
+            </summary>
+            <param name="uiSavedGame">Load savedata.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameLogic.StartGame">
+            <summary>
+            Start the game.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameLogic.SetAppAsServer">
+            <summary>
+            Sets the application to works as a server.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameLogic.SubscribeInvalidateMethod(System.Action)">
+            <summary>
+            Subscribes to invalidate visuals event.
+            </summary>
+            <param name="method">Method to subscribe.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameLogic.SetTeamID(System.Byte)">
+            <summary>
+            Sets team Id.
+            </summary>
+            <param name="id">Input Id.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameLogic.StopGameTimer">
+            <summary>
+            Stops game timer.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameLogic.SubscribeToGameEndedEvent(System.Action)">
+            <summary>
+            Subscribes to game ended event.
+            </summary>
+            <param name="method">Method to subscribe.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameLogic.GetAllProfiles">
+            <summary>
+            Gets all stored profiles from the repository.
+            </summary>
+            <returns>Observable collection of UIProfiles.</returns>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameLogic.DeleteProfile(System.Int32)">
+            <summary>
+            Deletes a profile from the repository via id.
+            </summary>
+            <param name="id">Profile id.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameLogic.GetAllMaps">
+            <summary>
+            Gets all stored map from the repository.
+            </summary>
+            <returns>List of UIMaps.</returns>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameLogic.GetAllSavedGames">
+            <summary>
+            Gets all saved games from repository.
+            </summary>
+            <returns>List of UISavedGames.</returns>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameLogic.PauseGame">
+            <summary>
+            Pauses the game.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameLogic.SaveGame">
+            <summary>
+            Savegame method.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameLogic.StartSessionTimer">
+            <summary>
+            Starts the session timer.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameLogic.PauseSessionTimer">
+            <summary>
+            Pauses the session timer.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameLogic.AddNewProfile(TankPocalypse.Logic.Interfaces.IUIProfile)">
+            <summary>
+            Adds a new profile to the repository.
+            </summary>
+            <param name="newProfile">Input UIProfile to add.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameLogic.SetGlobalProfile(TankPocalypse.Logic.Interfaces.IUIProfile)">
+            <summary>
+            Sets the global profile.
+            </summary>
+            <param name="globProfile">Input global profile.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.IGameLogic.DeleteEverything">
+            <summary>
+            Cleares every connection with dependencies.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.Logic.Interfaces.INetwork">
+            <summary>
+            Basic Network methods.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.INetwork.StartUdpClient(System.String)">
+            <summary>
+            Starts udp client.
+            </summary>
+            <param name="ip">ip.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.INetwork.StopUdpClient">
+            <summary>
+            Stops udp client.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.INetwork.StartUdpServer">
+            <summary>
+            Starts udp server.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.Interfaces.INetwork.StopUdpServer">
+            <summary>
+            Stops udp server.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.Logic.Interfaces.IUIMap">
+            <summary>
+            UIMap interface.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Logic.Interfaces.IUIMap.MapName">
+            <summary>
+            Gets the name of the map.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Logic.Interfaces.IUIMap.MapData">
+            <summary>
+            Gets the save data.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.Logic.Interfaces.IUIProfile">
+            <summary>
+            UIProfile interface.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Logic.Interfaces.IUIProfile.UnitsKilled">
+            <summary>
+            Gets the killed unit count.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Logic.Interfaces.IUIProfile.UnitsLost">
+            <summary>
+            Gets the lost unit count.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Logic.Interfaces.IUIProfile.GamesWon">
+            <summary>
+            Gets the win count.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Logic.Interfaces.IUIProfile.GamesLost">
+            <summary>
+            Gets the lose count.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Logic.Interfaces.IUIProfile.UserName">
+            <summary>
+            Gets the profile name.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Logic.Interfaces.IUIProfile.UserId">
+            <summary>
+            Gets the UserId.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Logic.Interfaces.IUIProfile.Scores">
+            <summary>
+            Gets the profiel scores.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.Logic.Interfaces.IUISavedGame">
+            <summary>
+            UISavedGame interface.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Logic.Interfaces.IUISavedGame.SaveId">
+            <summary>
+            Gets the save id.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Logic.Interfaces.IUISavedGame.SaveName">
+            <summary>
+            Gets the save name.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Logic.Interfaces.IUISavedGame.SaveFileXDoc">
+            <summary>
+            Gets the save data.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.Logic.Networking.ClientGamePacket">
+            <summary>
+            Client game packet class.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.ClientGamePacket.#ctor(System.Collections.Generic.List{TankPocalypse.Logic.Networking.Tank},System.Collections.Generic.List{TankPocalypse.Logic.Networking.EnemyNetworkPackage})">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Logic.Networking.ClientGamePacket"/> class.
+            Sets properties to be ready for network sending.
+            </summary>
+            <param name="tanks">list of tanks.</param>
+            <param name="networkTanks">number of tanks.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.ClientGamePacket.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Logic.Networking.ClientGamePacket"/> class.
+            Empty constructor.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.ClientGamePacket.#ctor(System.Byte[],System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Logic.Networking.ClientGamePacket"/> class.
+            </summary>
+            <param name="bytes">bytes.</param>
+            <param name="numofTank">number of tanks.</param>
+        </member>
+        <member name="P:TankPocalypse.Logic.Networking.ClientGamePacket.Tanks">
+            <summary>
+            Gets or sets list of tanks.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Logic.Networking.ClientGamePacket.NetworkTanks">
+            <summary>
+            Gets or sets list of network tanks.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.ClientGamePacket.SetClientGamePacketPayload">
+            <summary>
+            Sets payload from clientgamepacket properties.
+            </summary>
+            <returns>byte array.</returns>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.ClientGamePacket.ReadClientGamePacketPayload(System.Int32)">
+            <summary>
+            Sets properties by reading payload.
+            </summary>
+            <param name="numOfTanks">number of tanks.</param>
+        </member>
+        <member name="T:TankPocalypse.Logic.Networking.EnemyNetworkPackage">
+            <summary>
+            Enemy Team Network Package structure.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.EnemyNetworkPackage.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Logic.Networking.EnemyNetworkPackage"/> class.
+            Sets HP and ID.
+            </summary>
+            <param name="iD">ID.</param>
+            <param name="hP">Health.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.EnemyNetworkPackage.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Logic.Networking.EnemyNetworkPackage"/> class.
+            Parameter Free constructor.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Logic.Networking.EnemyNetworkPackage.ID">
+            <summary>
+            Gets or sets identifier.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Logic.Networking.EnemyNetworkPackage.HP">
+            <summary>
+            Gets or sets health.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.Logic.Networking.ExitPacket">
+            <summary>
+            Exit packet structure.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.ExitPacket.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Logic.Networking.ExitPacket"/> class.
+            With Exit type packetType.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.ExitPacket.#ctor(System.Byte[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Logic.Networking.ExitPacket"/> class.
+            </summary>
+            <param name="bytes">bytes.</param>
+        </member>
+        <member name="T:TankPocalypse.Logic.Networking.Extension">
+            <summary>
+            Extension method.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.Extension.SubArray``1(``0[],System.Int32,System.Int32)">
+            <summary>
+            Extension for Subarrays.
+            </summary>
+            <typeparam name="T">T.</typeparam>
+            <param name="array">Array.</param>
+            <param name="offset">offset.</param>
+            <param name="length">length.</param>
+            <returns> T type subarray.</returns>
+        </member>
+        <member name="T:TankPocalypse.Logic.Networking.Packet">
+            <summary>
+            Basic Packet structure.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.Packet.#ctor(TankPocalypse.Logic.Networking.PacketType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Logic.Networking.Packet"/> class.
+            Empty packet with only its type.
+            </summary>
+            <param name="type">type.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.Packet.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Logic.Networking.Packet"/> class.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.Packet.#ctor(System.Byte[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Logic.Networking.Packet"/> class.
+            Convert byte to Entity properties.
+            </summary>
+            <param name="bytes">bytes.</param>
+        </member>
+        <member name="P:TankPocalypse.Logic.Networking.Packet.Type">
+            <summary>
+            Gets or sets the type of a packet.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Logic.Networking.Packet.Payload">
+            <summary>
+            Gets or sets of sets the Payload of the packet.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Logic.Networking.Packet.Payloadlength">
+            <summary>
+            Gets or sets payloadlegth of the packet.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.Packet.Serialize(TankPocalypse.Logic.Networking.Tank)">
+            <summary>
+            Serialize Tank to byte.
+            </summary>
+            <param name="t">Tank.</param>
+            <returns>byte.</returns>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.Packet.SerializeNetworkTank(TankPocalypse.Logic.Networking.EnemyNetworkPackage)">
+            <summary>
+            Serialize Network tank.
+            </summary>
+            <param name="t">EnemyNetworkPackage.</param>
+            <returns>byte array.</returns>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.Packet.Desserialize(System.Byte[])">
+            <summary>
+            Desserialize Tank.
+            </summary>
+            <param name="data">byte[].</param>
+            <returns>Tank.</returns>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.Packet.CreateByteFromNetworkTankList(System.Collections.Generic.List{TankPocalypse.Logic.Networking.EnemyNetworkPackage})">
+            <summary>
+            Create Byte from network tanks list.
+            </summary>
+            <param name="tanks">tanks.</param>
+            <returns>byte array.</returns>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.Packet.CreateListFromByte(System.Byte[],System.Int32)">
+            <summary>
+            Create list from byte array.
+            </summary>
+            <param name="byteData">bytearray.</param>
+            <param name="numberofBytesPerEntity">number of bytes.</param>
+            <returns>List of tanks.</returns>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.Packet.CreateByteFromList(System.Collections.Generic.List{TankPocalypse.Logic.Networking.Tank})">
+            <summary>
+            Creates byte from list.
+            </summary>
+            <param name="tanks">tanks.</param>
+            <returns>byte array.</returns>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.Packet.DesserializeNetwork(System.Byte[])">
+            <summary>
+            Deseralizing Netowork package.
+            </summary>
+            <param name="data">data.</param>
+            <returns>EnemyNetworkPackage.</returns>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.Packet.CreateListFromBytetwork(System.Byte[])">
+            <summary>
+            Creating List from byte networkdata.
+            </summary>
+            <param name="byteData">byte array.</param>
+            <returns>List of Enemyvehicles.</returns>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.Packet.GetBytes">
+            <summary>
+            Create byte Array from properties.
+            </summary>
+            <returns>byte array.</returns>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.Packet.Send(System.Net.Sockets.NetworkStream)">
+            <summary>
+            Write data to networkstream.
+            </summary>
+            <param name="stream">networkstream.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.Packet.Send(System.Net.Sockets.UdpClient,System.Net.IPEndPoint)">
+            <summary>
+            Write data to udpclient with a specified IPEndPoint.
+            </summary>
+            <param name="client">UdpClient.</param>
+            <param name="receiver">IPEndPoint.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.Packet.Send(System.Net.Sockets.UdpClient)">
+            <summary>
+            Write data to udpclient.
+            </summary>
+            <param name="client">UdpClient.</param>
+        </member>
+        <member name="T:TankPocalypse.Logic.Networking.PacketType">
+            <summary>
+            PacketType.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.Logic.Networking.PacketType.None">
+            <summary>
+            None.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.Logic.Networking.PacketType.Username">
+            <summary>
+            Username.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.Logic.Networking.PacketType.UsernameMapData">
+            <summary>
+            UsernameMapData.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.Logic.Networking.PacketType.UserIsReady">
+            <summary>
+            UserIsReady.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.Logic.Networking.PacketType.UnitCount">
+            <summary>
+            ASD.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.Logic.Networking.PacketType.CanStartGame">
+            <summary>
+            CanStartGame.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.Logic.Networking.PacketType.Pause">
+            <summary>
+            Pause.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.Logic.Networking.PacketType.ClientPackage">
+            <summary>
+            ClientPackage.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.Logic.Networking.PacketType.ServerPackage">
+            <summary>
+            ServerPackage.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.Logic.Networking.PacketType.Ping">
+            <summary>
+            Ping.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.Logic.Networking.PacketType.Exit">
+            <summary>
+            Exit.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.Logic.Networking.PingPacket">
+            <summary>
+            Ping packet class.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.PingPacket.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Logic.Networking.PingPacket"/> class.
+            Set PacketType to Ping,and an empty Payload.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.PingPacket.#ctor(System.Byte[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Logic.Networking.PingPacket"/> class.
+            Set PacketType to Ping and Payload to receive bytes.
+            </summary>
+            <param name="bytes">byte array.</param>
+        </member>
+        <member name="T:TankPocalypse.Logic.Networking.ReadyPacket">
+            <summary>
+            Ready packet class.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.ReadyPacket.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Logic.Networking.ReadyPacket"/> class.
+            Set PacketType to Ready,and an empty Payload.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.ReadyPacket.#ctor(System.Byte[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Logic.Networking.ReadyPacket"/> class.
+            Set PacketType to Ready and Payload to receive bytes.
+            </summary>
+            <param name="bytes">byte array.</param>
+        </member>
+        <member name="T:TankPocalypse.Logic.Networking.ServerGamePacket">
+            <summary>
+            Server Game Packet class.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.Logic.Networking.ServerGamePacket.numOfTanks">
+            <summary>
+            number of tanks.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.ServerGamePacket.#ctor(System.Collections.Generic.List{TankPocalypse.Logic.Networking.Tank},System.Collections.Generic.List{TankPocalypse.Logic.Networking.EnemyNetworkPackage},System.Int32,System.Int32,System.Int16)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Logic.Networking.ServerGamePacket"/> class.
+            Set properties' values.
+            </summary>
+            <param name="tanks">own tanklist.</param>
+            <param name="networkTanks"> enemy tanklist.</param>
+            <param name="team0Base">team0 base percent.</param>
+            <param name="team1Base">team1 base percent.</param>
+            <param name="sessionTime">sessionTime.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.ServerGamePacket.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Logic.Networking.ServerGamePacket"/> class.
+            Set packettype to ServerPackage.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.ServerGamePacket.#ctor(System.Byte[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Logic.Networking.ServerGamePacket"/> class.
+            Convert byte array to ServerGamepacket properties.
+            </summary>
+            <param name="bytes">bytes array.</param>
+        </member>
+        <member name="P:TankPocalypse.Logic.Networking.ServerGamePacket.Tanks">
+            <summary>
+            Gets or sets tank list.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Logic.Networking.ServerGamePacket.NetworkTanks">
+            <summary>
+            Gets or sets network tanks.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Logic.Networking.ServerGamePacket.Team0Base">
+            <summary>
+            Gets or sets team0 base percent.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Logic.Networking.ServerGamePacket.Team1Base">
+            <summary>
+            Gets or sets team1 base percent.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Logic.Networking.ServerGamePacket.SessionTime">
+            <summary>
+            Gets or sets session Time.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.ServerGamePacket.SetServerGamePacketPayload">
+            <summary>
+            Create byte array from class properties.
+            </summary>
+            <returns>byte array.</returns>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.ServerGamePacket.ReadServerGamePacketPayload(System.Int32)">
+            <summary>
+            Reads Payload and convert byte subarrays to properties.
+            </summary>
+            <param name="numOfTanks">number of tanks.</param>
+        </member>
+        <member name="T:TankPocalypse.Logic.Networking.Tank">
+            <summary>
+            Tank basic structure.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.Tank.#ctor(System.Int32,TankPocalypse.Logic.Networking.VectorExtend,System.Int32,System.Int32,System.Byte)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Logic.Networking.Tank"/> class.
+            Setup properties via contructor.
+            </summary>
+            <param name="id">id.</param>
+            <param name="pos">pos.</param>
+            <param name="turret">turret.</param>
+            <param name="body">body.</param>
+            /// <param name="shootid">shootid.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.Tank.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Logic.Networking.Tank"/> class.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Logic.Networking.Tank.Id">
+            <summary>
+            Gets or sets id.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Logic.Networking.Tank.Position">
+            <summary>
+            Gets or sets Position.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Logic.Networking.Tank.TurretIdx">
+            <summary>
+            Gets or sets turretIdx.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Logic.Networking.Tank.BodyIdx">
+            <summary>
+            Gets or sets bodyIdx.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Logic.Networking.Tank.ShootIdx">
+            <summary>
+            Gets or sets shootIdx.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.Logic.Networking.VectorExtend">
+            <summary>
+            Extended Vector2 properties.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.Networking.VectorExtend.#ctor(System.Single,System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Logic.Networking.VectorExtend"/> class.
+            Set Values of properties.
+            </summary>
+            <param name="x">x.</param>
+            <param name="y">y.</param>
+        </member>
+        <member name="P:TankPocalypse.Logic.Networking.VectorExtend.X">
+            <summary>
+            Gets or sets x value.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Logic.Networking.VectorExtend.Y">
+            <summary>
+            Gets or sets y value.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.Logic.UIClasses.UIMap">
+            <summary>
+            UIMap class. Represents the Map class for the ui layer.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.UIClasses.UIMap.#ctor(System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Logic.UIClasses.UIMap"/> class.
+            </summary>
+            <param name="name">Name of the map.</param>
+            <param name="mapData">Map data.</param>
+        </member>
+        <member name="P:TankPocalypse.Logic.UIClasses.UIMap.MapName">
+            <inheritdoc/>
+        </member>
+        <member name="P:TankPocalypse.Logic.UIClasses.UIMap.MapData">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.Logic.UIClasses.UIMap.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.Logic.UIClasses.UIMap.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:TankPocalypse.Logic.UIClasses.UIProfile">
+            <summary>
+            UIProfile class. Represents the Profile class for the ui layer.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.UIClasses.UIProfile.#ctor(System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Logic.UIClasses.UIProfile"/> class.
+            </summary>
+            <param name="userName">Name of the profile.</param>
+            <param name="userId">Profile Id.</param>
+            <param name="scores">Profile score.</param>
+            <param name="uKilled">Units killed count.</param>
+            <param name="uLost">Units lost count.</param>
+            <param name="gW">Games won count.</param>
+            <param name="gL">Games lost count.</param>
+        </member>
+        <member name="M:TankPocalypse.Logic.UIClasses.UIProfile.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Logic.UIClasses.UIProfile"/> class.
+            </summary>
+            <param name="name">Profile name.</param>
+            <param name="id">Profile id.</param>
+        </member>
+        <member name="P:TankPocalypse.Logic.UIClasses.UIProfile.UnitsKilled">
+            <inheritdoc/>
+        </member>
+        <member name="P:TankPocalypse.Logic.UIClasses.UIProfile.UnitsLost">
+            <inheritdoc/>
+        </member>
+        <member name="P:TankPocalypse.Logic.UIClasses.UIProfile.GamesWon">
+            <inheritdoc/>
+        </member>
+        <member name="P:TankPocalypse.Logic.UIClasses.UIProfile.GamesLost">
+            <inheritdoc/>
+        </member>
+        <member name="P:TankPocalypse.Logic.UIClasses.UIProfile.UserName">
+            <inheritdoc/>
+        </member>
+        <member name="P:TankPocalypse.Logic.UIClasses.UIProfile.UserId">
+            <inheritdoc/>
+        </member>
+        <member name="P:TankPocalypse.Logic.UIClasses.UIProfile.Scores">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.Logic.UIClasses.UIProfile.ConvertProfileToUIProfile(TankPocalypse.Repository.Interfaces.IProfile)">
+            <summary>
+            Converts Profile object to UIProfile object.
+            </summary>
+            <param name="repoProf">Profile input object.</param>
+            <returns>New UIProfile object.</returns>
+        </member>
+        <member name="M:TankPocalypse.Logic.UIClasses.UIProfile.ConvertUIProfileToProfile(TankPocalypse.Logic.Interfaces.IUIProfile)">
+            <summary>
+            Converts UIProfile object to Profile object.
+            </summary>
+            <param name="logicProf">UIProfile input object.</param>
+            <returns>New Profile object.</returns>
+        </member>
+        <member name="M:TankPocalypse.Logic.UIClasses.UIProfile.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.Logic.UIClasses.UIProfile.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.Logic.UIClasses.UIProfile.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="T:TankPocalypse.Logic.UIClasses.UISavedGame">
+            <summary>
+            UISavedGame class. Represents the SavedGame class for ui layer.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Logic.UIClasses.UISavedGame.#ctor(System.Byte,System.String,System.Xml.Linq.XDocument)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Logic.UIClasses.UISavedGame"/> class.
+            </summary>
+            <param name="id">Save Id.</param>
+            <param name="saveName">Save name.</param>
+            <param name="saveFileXDoc">Save data.</param>
+        </member>
+        <member name="P:TankPocalypse.Logic.UIClasses.UISavedGame.SaveId">
+            <inheritdoc/>
+        </member>
+        <member name="P:TankPocalypse.Logic.UIClasses.UISavedGame.SaveName">
+            <inheritdoc/>
+        </member>
+        <member name="P:TankPocalypse.Logic.UIClasses.UISavedGame.SaveFileXDoc">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.Logic.UIClasses.UISavedGame.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.Logic.UIClasses.UISavedGame.GetHashCode">
+            <inheritdoc/>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,343 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TankPocalypse.Repository</name>
+    </assembly>
+    <members>
+        <member name="T:TankPocalypse.Repository.Classes.Map">
+            <summary>
+            THis is the Map class, which represents the stored map data.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Repository.Classes.Map.#ctor(System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Repository.Classes.Map"/> class.
+            </summary>
+            <param name="name">Map name.</param>
+            <param name="mapData">Map data.</param>
+        </member>
+        <member name="P:TankPocalypse.Repository.Classes.Map.MapName">
+            <summary>
+            Gets the name of the map.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Repository.Classes.Map.MapData">
+            <summary>
+            Gets the data of the map.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Repository.Classes.Map.CreateMapFromXml(System.Xml.Linq.XDocument)">
+            <summary>
+            This static method creates a new Map entity from the given xml document.
+            </summary>
+            <param name="xMap">Xml data.</param>
+            <returns>New IMap entity.</returns>
+        </member>
+        <member name="T:TankPocalypse.Repository.Classes.RepoProfile">
+            <summary>
+            This is the profile class. It handels the stored profiles data.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Repository.Classes.RepoProfile.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Repository.Classes.RepoProfile"/> class.
+            </summary>
+            <param name="userName">Profile name.</param>
+            <param name="userId">Profile id.</param>
+        </member>
+        <member name="M:TankPocalypse.Repository.Classes.RepoProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Repository.Classes.RepoProfile"/> class.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Repository.Classes.RepoProfile.UserName">
+            <summary>
+            Gets the profile name.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Repository.Classes.RepoProfile.UserId">
+            <summary>
+            Gets the UserId.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Repository.Classes.RepoProfile.Scores">
+            <summary>
+            Gets the profiel scores.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Repository.Classes.RepoProfile.UnitsKilled">
+            <summary>
+            Gets the killed unit count.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Repository.Classes.RepoProfile.UnitsLost">
+            <summary>
+            Gets the lost unit count.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Repository.Classes.RepoProfile.GamesWon">
+            <summary>
+            Gets the win count.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Repository.Classes.RepoProfile.GamesLost">
+            <summary>
+            Gets the lose count.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Repository.Classes.RepoProfile.CreateFromXml(System.Xml.Linq.XDocument)">
+            <summary>
+            Static method, which creates a Profile entity from the given xml input.
+            </summary>
+            <param name="profX">Profile xml data.</param>
+            <returns>New IProfile entity.</returns>
+        </member>
+        <member name="M:TankPocalypse.Repository.Classes.RepoProfile.Update(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Updates the profiles statistics after matches.
+            </summary>
+            <param name="unitsKilled">Kill count.</param>
+            <param name="unitsLost">Lose count.</param>
+            <param name="won">Did user won or not.</param>
+        </member>
+        <member name="T:TankPocalypse.Repository.Classes.SavedGame">
+            <summary>
+            Savegame class. Stores every data necessary to load a saved game.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Repository.Classes.SavedGame.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Repository.Classes.SavedGame"/> class.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Repository.Classes.SavedGame.#ctor(System.Byte,System.String,System.Xml.Linq.XDocument)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Repository.Classes.SavedGame"/> class.
+            </summary>
+            <param name="saveId">Save game id.</param>
+            <param name="saveDescription">Description of save.</param>
+            <param name="saveXDoc">Save data xml.</param>
+        </member>
+        <member name="P:TankPocalypse.Repository.Classes.SavedGame.SaveId">
+            <summary>
+            Gets the index of saved game.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Repository.Classes.SavedGame.SaveDescription">
+            <summary>
+            Gets the description of saved game.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Repository.Classes.SavedGame.SaveXDoc">
+            <summary>
+            Gets the save data.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Repository.Classes.SavedGame.CreateSavedGameFromXML(System.Xml.Linq.XDocument)">
+            <summary>
+            Static method. Creates a SavedGame entity from the given xml data.
+            </summary>
+            <param name="savedGameXml">Xml data.</param>
+            <returns>SavedGame entity.</returns>
+        </member>
+        <member name="T:TankPocalypse.Repository.GameRepository">
+            <summary>
+            This is the games repository. It handels all the sotred data management.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Repository.GameRepository.#ctor(TankPocalypse.Model.Interfaces.IGameModel,TankPocalypse.Model.Interfaces.IGameWorld)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Repository.GameRepository"/> class.
+            </summary>
+            <param name="gameModel">GameModel entity.</param>
+            <param name="gameWorld">GameWorld entity.</param>
+        </member>
+        <member name="M:TankPocalypse.Repository.GameRepository.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Repository.GameRepository"/> class.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Repository.GameRepository.LoadSaved(TankPocalypse.Repository.Interfaces.ISavedGame)">
+            <summary>
+            Loads the given saved game.
+            </summary>
+            <param name="savedGame">SavedGame entity.</param>
+        </member>
+        <member name="M:TankPocalypse.Repository.GameRepository.SaveGame">
+            <summary>
+            Saves the current state of the game.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Repository.GameRepository.GetSavedGames">
+            <summary>
+            Returns every saved game files in a list.
+            </summary>
+            <returns>List of ISavedGame entities.</returns>
+        </member>
+        <member name="M:TankPocalypse.Repository.GameRepository.GetAllProfiles">
+            <summary>
+            Returns every stored profile in a list.
+            </summary>
+            <returns>IProfile list.</returns>
+        </member>
+        <member name="M:TankPocalypse.Repository.GameRepository.GetAllMaps">
+            <summary>
+            Returns every stored map in a list.
+            </summary>
+            <returns>IMap list.</returns>
+        </member>
+        <member name="M:TankPocalypse.Repository.GameRepository.UpdateProfile(System.Int32,System.String,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            Updates the profile statistics.
+            </summary>
+            <param name="id">Profile id.</param>
+            <param name="userName">Profile name.</param>
+            <param name="didWin">Bool, which represents the outcome of the game.</param>
+            <param name="killedUnits">Killed unit count.</param>
+            <param name="lostUnits">Lost unit count.</param>
+        </member>
+        <member name="M:TankPocalypse.Repository.GameRepository.DeleteProfile(System.Int32)">
+            <summary>
+            Deletes the profile by id.
+            </summary>
+            <param name="id">Profile id.</param>
+        </member>
+        <member name="M:TankPocalypse.Repository.GameRepository.AddProfile(TankPocalypse.Repository.Interfaces.IProfile)">
+            <summary>
+            Adds a new profile to the repository.
+            </summary>
+            <param name="profil">New profile.</param>
+        </member>
+        <member name="T:TankPocalypse.Repository.Interfaces.IGameRepository">
+            <summary>
+            GameRepository interface.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Repository.Interfaces.IGameRepository.GetAllMaps">
+            <summary>
+            Returns every stored map in a list.
+            </summary>
+            <returns>IMap list.</returns>
+        </member>
+        <member name="M:TankPocalypse.Repository.Interfaces.IGameRepository.GetAllProfiles">
+            <summary>
+            Returns every stored profile in a list.
+            </summary>
+            <returns>IProfile list.</returns>
+        </member>
+        <member name="M:TankPocalypse.Repository.Interfaces.IGameRepository.UpdateProfile(System.Int32,System.String,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            Updates the profile statistics.
+            </summary>
+            <param name="id">Profile id.</param>
+            <param name="userName">Profile name.</param>
+            <param name="didWin">Bool, which represents the outcome of the game.</param>
+            <param name="killedUnits">Killed unit count.</param>
+            <param name="lostUnits">Lost unit count.</param>
+        </member>
+        <member name="M:TankPocalypse.Repository.Interfaces.IGameRepository.DeleteProfile(System.Int32)">
+            <summary>
+            Deletes the profile by id.
+            </summary>
+            <param name="id">Profile id.</param>
+        </member>
+        <member name="M:TankPocalypse.Repository.Interfaces.IGameRepository.AddProfile(TankPocalypse.Repository.Interfaces.IProfile)">
+            <summary>
+            Adds a new profile to the repository.
+            </summary>
+            <param name="profil">New profile.</param>
+        </member>
+        <member name="M:TankPocalypse.Repository.Interfaces.IGameRepository.LoadSaved(TankPocalypse.Repository.Interfaces.ISavedGame)">
+            <summary>
+            Loads the given saved game.
+            </summary>
+            <param name="savedGame">SavedGame entity.</param>
+        </member>
+        <member name="M:TankPocalypse.Repository.Interfaces.IGameRepository.SaveGame">
+            <summary>
+            Saves the current state of the game.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Repository.Interfaces.IGameRepository.GetSavedGames">
+            <summary>
+            Returns every saved game files in a list.
+            </summary>
+            <returns>List of ISavedGame entities.</returns>
+        </member>
+        <member name="T:TankPocalypse.Repository.Interfaces.IMap">
+            <summary>
+            Map interface.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Repository.Interfaces.IMap.MapName">
+            <summary>
+            Gets the name of the map.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Repository.Interfaces.IMap.MapData">
+            <summary>
+            Gets the data of the map.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.Repository.Interfaces.IProfile">
+            <summary>
+            Profile interface.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Repository.Interfaces.IProfile.UnitsKilled">
+            <summary>
+            Gets the killed unit count.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Repository.Interfaces.IProfile.UnitsLost">
+            <summary>
+            Gets the lost unit count.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Repository.Interfaces.IProfile.GamesWon">
+            <summary>
+            Gets the win count.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Repository.Interfaces.IProfile.GamesLost">
+            <summary>
+            Gets the lose count.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Repository.Interfaces.IProfile.UserName">
+            <summary>
+            Gets the profile name.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Repository.Interfaces.IProfile.UserId">
+            <summary>
+            Gets the UserId.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Repository.Interfaces.IProfile.Scores">
+            <summary>
+            Gets the profiel scores.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.Repository.Interfaces.ISavedGame">
+            <summary>
+            SavedGame interface.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Repository.Interfaces.ISavedGame.SaveId">
+            <summary>
+            Gets the saves id.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Repository.Interfaces.ISavedGame.SaveDescription">
+            <summary>
+            Gets the saves description.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Repository.Interfaces.ISavedGame.SaveXDoc">
+            <summary>
+            Gets the save data.
+            </summary>
+        </member>
+    </members>
+</doc>

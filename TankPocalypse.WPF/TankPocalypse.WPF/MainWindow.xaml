@@ -1,0 +1,47 @@
+﻿<Window x:Class="TankPocalypse.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:TankPocalypse.WPF.VM"
+        xmlns:ui="clr-namespace:TankPocalypse.WPF.UI"
+        mc:Ignorable="d"
+        ResizeMode="CanMinimize"
+        Loaded="MainWindow_OnLoaded"
+        Title="TankPocalypse" Height="750" Width="1280">
+    <Window.Resources>
+        <vm:MainViewModel x:Key="MainVM"/>
+
+        <DataTemplate DataType="{x:Type vm:GameViewModel}">
+            <ui:GameViewUserControl DataContext="{Binding Path=MainVm.SelectedViewModel}"/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:MenuViewModel}">
+            <ui:MainMenu DataContext="{Binding Path=MainVm.SelectedViewModel}"/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ProfileViewModel}">
+            <ui:ProfileMenu DataContext="{Binding Path=MainVm.SelectedViewModel}"/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:LobbyViewModel}">
+            <ui:LobbyMenu DataContext="{Binding Path=MainVm.SelectedViewModel}"/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ClientViewModel}">
+            <ui:ClientMenu DataContext="{Binding Path=MainVm.SelectedViewModel}"/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ServerViewModel}">
+            <ui:ServerMenu DataContext="{Binding Path=MainVm.SelectedViewModel}"/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:LoadViewModel}">
+            <ui:LoadMenu DataContext="{Binding Path=MainVm.SelectedViewModel}"/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:NewProfileViewModel}">
+            <ui:NewProfileMenu DataContext="{Binding Path=MainVm.SelectedViewModel}"/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:HighScoreViewModel}">
+            <ui:HighScoreMenu DataContext="{Binding Path=MainVm.SelectedViewModel}"/>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid DataContext="{StaticResource MainVM}" >
+        <ContentControl Content="{Binding SelectedViewModel}"/>
+    </Grid>
+</Window>

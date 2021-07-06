@@ -1,0 +1,257 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TankPocalypse.Renderer</name>
+    </assembly>
+    <members>
+        <member name="T:TankPocalypse.Renderer.AnimationController">
+            <summary>
+            Animation controller handles.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Renderer.AnimationController.#ctor(TankPocalypse.Model.Interfaces.IGameImageController,TankPocalypse.Model.Interfaces.IGameModel)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Renderer.AnimationController"/> class.
+            </summary>
+            <param name="imageController">GameImageController entity.</param>
+            <param name="gameModel">GameModel entitry.</param>
+        </member>
+        <member name="M:TankPocalypse.Renderer.AnimationController.UpdateAnimations(System.Windows.Media.DrawingGroup@)">
+            <summary>
+            Updates the animations when method is called.
+            </summary>
+            <param name="dg">Drawing handler for animations to be drawn with.</param>
+        </member>
+        <member name="M:TankPocalypse.Renderer.AnimationController.AddAnimationFromVehicle(TankPocalypse.Model.Interfaces.IVehicle,System.String)">
+            <summary>
+            Creates a new animation on vheicle, depending on the input identifier value.
+            </summary>
+            <param name="vehicle">Source vehicle.</param>
+            <param name="identifier">Type of animation.</param>
+        </member>
+        <member name="T:TankPocalypse.Renderer.Animations.ExplosionAnimation">
+            <summary>
+            Explosion animation for vehicle.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Renderer.Animations.ExplosionAnimation.#ctor(TankPocalypse.Model.Interfaces.IVehicle)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Renderer.Animations.ExplosionAnimation"/> class.
+            </summary>
+            <param name="vehicle">Reference vehicle.</param>
+        </member>
+        <member name="P:TankPocalypse.Renderer.Animations.ExplosionAnimation.IsFinished">
+            <summary>
+            Gets a value indicating whether animation is finished or not.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Renderer.Animations.ExplosionAnimation.IncreaseTick">
+            <summary>
+            Increases animation tick.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Renderer.Animations.ExplosionAnimation.DrawAnimation(System.Windows.Media.DrawingGroup@,TankPocalypse.Model.Interfaces.IGameImageController@)">
+            <summary>
+            Creates a drawing from the animations actual state.
+            </summary>
+            <param name="dg">The animation adds its image to this drawing group.</param>
+            <param name="imageController">The animation gets its images from the ImageController.</param>
+        </member>
+        <member name="T:TankPocalypse.Renderer.Animations.FlameAnimation">
+            <summary>
+            Burning animation for vehicle.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Renderer.Animations.FlameAnimation.#ctor(TankPocalypse.Model.Interfaces.IVehicle)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Renderer.Animations.FlameAnimation"/> class.
+            </summary>
+            <param name="vehicle">Reference vehicle.</param>
+        </member>
+        <member name="P:TankPocalypse.Renderer.Animations.FlameAnimation.IsFinished">
+            <summary>
+            Gets a value indicating whether animation is finished or not.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Renderer.Animations.FlameAnimation.IncreaseTick">
+            <summary>
+            Increases animation tick.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Renderer.Animations.FlameAnimation.DrawAnimation(System.Windows.Media.DrawingGroup@,TankPocalypse.Model.Interfaces.IGameImageController@)">
+            <summary>
+            Creates a drawing from the animations actual state.
+            </summary>
+            <param name="dg">The animation adds its image to this drawing group.</param>
+            <param name="imageController">The animation gets its images from the ImageController.</param>
+        </member>
+        <member name="T:TankPocalypse.Renderer.Animations.ShootAnimation">
+            <summary>
+            Shooting animation for vehicle.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Renderer.Animations.ShootAnimation.#ctor(TankPocalypse.Model.Interfaces.IVehicle)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Renderer.Animations.ShootAnimation"/> class.
+            </summary>
+            <param name="vehicle">Reference vehicle.</param>
+        </member>
+        <member name="P:TankPocalypse.Renderer.Animations.ShootAnimation.IsFinished">
+            <summary>
+            Gets a value indicating whether animation is finished or not.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Renderer.Animations.ShootAnimation.IncreaseTick">
+            <summary>
+            Increases animation tick.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Renderer.Animations.ShootAnimation.DrawAnimation(System.Windows.Media.DrawingGroup@,TankPocalypse.Model.Interfaces.IGameImageController@)">
+            <summary>
+            Creates a drawing from the animations actual state.
+            </summary>
+            <param name="dg">The animation adds its image to this drawing group.</param>
+            <param name="imageController">The animation gets its images from the ImageController.</param>
+        </member>
+        <member name="T:TankPocalypse.Renderer.ExtensionMethods">
+            <summary>
+            This is an extension class, which adds extension methods to the specified type.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Renderer.ExtensionMethods.RotateByAngle(System.Numerics.Vector2,System.Single)">
+            <summary>
+            Rotates the given vector by the given degree input. Degree value is float.
+            </summary>
+            <param name="v">Vector to rotate.</param>
+            <param name="degrees">Rotation unit in degrees.</param>
+            <returns>The input vectors rotated version.</returns>
+        </member>
+        <member name="M:TankPocalypse.Renderer.ExtensionMethods.RotateByAngle(System.Numerics.Vector2,System.Double)">
+            <summary>
+            Rotates the given vector by the given degree input. Degree value is double.
+            </summary>
+            <param name="v">Vector to rotate.</param>
+            <param name="degrees">Rotation unit in degrees.</param>
+            <returns>The input vectors rotated version.</returns>
+        </member>
+        <member name="T:TankPocalypse.Renderer.GameRenderer">
+            <summary>
+            This is the Game Renderer class. This class handles all the rendering.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Renderer.GameRenderer.#ctor(TankPocalypse.Model.Interfaces.IGameModel,TankPocalypse.Model.Interfaces.IGameWorld,TankPocalypse.Model.Interfaces.IGameImageController,TankPocalypse.Renderer.Interfaces.IAnimationController)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.Renderer.GameRenderer"/> class.
+            </summary>
+            <param name="gameModel">GameModel entity.</param>
+            <param name="gameWorld">GameWorld entity.</param>
+            <param name="gameImage">GameImgae entity.</param>
+            <param name="animControl">AnimControl entity.</param>
+        </member>
+        <member name="P:TankPocalypse.Renderer.GameRenderer.ZoomRate">
+            <summary>
+            Gets or sets the zoomrate of the "camera".
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Renderer.GameRenderer.SetupRender(System.Int32,System.Int32)">
+            <summary>
+            Initialises the gamerenderer.
+            </summary>
+            <param name="winX">Windows actual width.</param>
+            <param name="winY">Windows actual height.</param>
+        </member>
+        <member name="M:TankPocalypse.Renderer.GameRenderer.DeleteEverything">
+            <summary>
+            Clear every cached dependencies.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Renderer.GameRenderer.ScreenZoomRateMethod(System.Int16)">
+            <summary>
+            This method updates the zoomrate value of the camera.
+            </summary>
+            <param name="zoom">Cameras zoomrate.</param>
+        </member>
+        <member name="M:TankPocalypse.Renderer.GameRenderer.WorldToScreenSpace(System.Numerics.Vector2)">
+            <summary>
+            Converts world coordinates to ismetric view coordinates.
+            </summary>
+            <param name="toConvertVector">Vector to convert.</param>
+            <returns>Isometric view vector.</returns>
+        </member>
+        <member name="M:TankPocalypse.Renderer.GameRenderer.CreateOnScreenDrawing">
+            <summary>
+            Creates a new drawing to render.
+            </summary>
+            <returns>New drawing.</returns>
+        </member>
+        <member name="T:TankPocalypse.Renderer.Interfaces.IAnimationController">
+            <summary>
+            Animation controller interface.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Renderer.Interfaces.IAnimationController.UpdateAnimations(System.Windows.Media.DrawingGroup@)">
+            <summary>
+            Updates the animations when method is called.
+            </summary>
+            <param name="dg">Drawing handler for animations to be drawn with.</param>
+        </member>
+        <member name="M:TankPocalypse.Renderer.Interfaces.IAnimationController.AddAnimationFromVehicle(TankPocalypse.Model.Interfaces.IVehicle,System.String)">
+            <summary>
+            Creates a new animation on vheicle, depending on the input identifier value.
+            </summary>
+            <param name="vehicle">Source vehicle.</param>
+            <param name="identifier">Type of animation.</param>
+        </member>
+        <member name="T:TankPocalypse.Renderer.Interfaces.ICustomAnimation">
+            <summary>
+            Custom animation interface for animations.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.Renderer.Interfaces.ICustomAnimation.IsFinished">
+            <summary>
+            Gets a value indicating whether animation is finished or not.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Renderer.Interfaces.ICustomAnimation.IncreaseTick">
+            <summary>
+            Increases animation tick.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Renderer.Interfaces.ICustomAnimation.DrawAnimation(System.Windows.Media.DrawingGroup@,TankPocalypse.Model.Interfaces.IGameImageController@)">
+            <summary>
+            Creates a drawing from the animations actual state.
+            </summary>
+            <param name="dg">The animation adds its image to this drawing group.</param>
+            <param name="imageController">The animation gets its images from the ImageController.</param>
+        </member>
+        <member name="T:TankPocalypse.Renderer.Interfaces.IGameRenderer">
+            <summary>
+            GameRenderer interface.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Renderer.Interfaces.IGameRenderer.SetupRender(System.Int32,System.Int32)">
+            <summary>
+            Initialises the gamerenderer.
+            </summary>
+            <param name="winX">Windows actual width.</param>
+            <param name="winY">Windows actual height.</param>
+        </member>
+        <member name="M:TankPocalypse.Renderer.Interfaces.IGameRenderer.DeleteEverything">
+            <summary>
+            Clear every cached dependencies.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.Renderer.Interfaces.IGameRenderer.CreateOnScreenDrawing">
+            <summary>
+            Creates a new drawing to render.
+            </summary>
+            <returns>New drawing.</returns>
+        </member>
+        <member name="M:TankPocalypse.Renderer.Interfaces.IGameRenderer.ScreenZoomRateMethod(System.Int16)">
+            <summary>
+            This method updates the zoomrate value of the camera.
+            </summary>
+            <param name="zoom">Cameras zoomrate.</param>
+        </member>
+    </members>
+</doc>

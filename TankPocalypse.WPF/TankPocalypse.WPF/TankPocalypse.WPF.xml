@@ -1,0 +1,2084 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TankPocalypse.WPF</name>
+    </assembly>
+    <members>
+        <member name="T:TankPocalypse.WPF.App">
+            <summary>
+            Interaction logic for App.xaml.
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.App.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.App"/> class.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.App.RegisterInstances">
+            <summary>
+            Registers IoC instances.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.WPF.Interfaces.IGameControl">
+            <summary>
+            GameControl interface.
+            </summary>
+        </member>
+        <member name="E:TankPocalypse.WPF.Interfaces.IGameControl.PauseEvent">
+            <summary>
+            Pause event.
+            </summary>
+        </member>
+        <member name="E:TankPocalypse.WPF.Interfaces.IGameControl.GameHasEndedNet">
+            <summary>
+            Game has ended event. Used for signalling to the connected client.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Interfaces.IGameControl.IsGameEnded">
+            <summary>
+            Gets or sets a value indicating whether game has ended or not.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Interfaces.IGameControl.ConnectionLost">
+            <summary>
+            Gets a value indicating whether the connection is still up or not.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Interfaces.IGameControl.InvalidateVisual">
+            <summary>
+            Invalidates the visuals and refreshes render.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Interfaces.IGameControl.StartNewGame(TankPocalypse.Logic.Interfaces.IUIMap,System.Byte,System.Byte,TankPocalypse.Logic.Interfaces.IUIProfile,System.Boolean,System.String)">
+            <summary>
+            Starts a new game.
+            </summary>
+            <param name="mapToLoad">Map data.</param>
+            <param name="teamId">Team id.</param>
+            <param name="unitCount">Unit count.</param>
+            <param name="globProfile">Used profile.</param>
+            <param name="isServer">App is running in server mode or not.</param>
+            <param name="ip">Connection ip address.</param>
+        </member>
+        <member name="M:TankPocalypse.WPF.Interfaces.IGameControl.LoadGame(TankPocalypse.Logic.Interfaces.IUISavedGame,System.Byte,TankPocalypse.Logic.Interfaces.IUIProfile,System.Boolean,System.String)">
+            <summary>
+            Loads a previously saved game.
+            </summary>
+            <param name="saveFile">Save data.</param>
+            <param name="teamId">Team id.</param>
+            <param name="globProfile">Used profile.</param>
+            <param name="isServer">App is running in server mode or not.</param>
+            <param name="ip">Connection ip address.</param>
+        </member>
+        <member name="M:TankPocalypse.WPF.Interfaces.IGameControl.SetTeamID(System.Byte)">
+            <summary>
+            Sets the team id.
+            </summary>
+            <param name="teamID">Team id.</param>
+        </member>
+        <member name="M:TankPocalypse.WPF.Interfaces.IGameControl.SetEnd">
+            <summary>
+            Sets the game to an ended state.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Interfaces.IGameControl.DeleteEverything">
+            <summary>
+            Cleares every dependency connection.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Interfaces.IGameControl.PauseGame">
+            <summary>
+            Pauses the game.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Interfaces.IGameControl.SaveGame">
+            <summary>
+            Saves the game.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Interfaces.IGameControl.GetProfiles">
+            <summary>
+            Gets all stored profiles.
+            </summary>
+            <returns>An observable collection of UIProfiles.</returns>
+        </member>
+        <member name="M:TankPocalypse.WPF.Interfaces.IGameControl.DeleteProfile(TankPocalypse.Logic.Interfaces.IUIProfile)">
+            <summary>
+            Deletes the given profile from the repository.
+            </summary>
+            <param name="selectedProfile">Profile to be deleted.</param>
+        </member>
+        <member name="M:TankPocalypse.WPF.Interfaces.IGameControl.AddNewProfile(TankPocalypse.Logic.Interfaces.IUIProfile)">
+            <summary>
+            Adds a new profile to the repository.
+            </summary>
+            <param name="newProfile">New profile to be added.</param>
+        </member>
+        <member name="M:TankPocalypse.WPF.Interfaces.IGameControl.GetAllMaps">
+            <summary>
+            Gets all the stored maps from repository.
+            </summary>
+            <returns>List of UIMaps.</returns>
+        </member>
+        <member name="M:TankPocalypse.WPF.Interfaces.IGameControl.GetAllSaves">
+            <summary>
+            Gets all the stored saves from the repository.
+            </summary>
+            <returns>List of UISavedGames.</returns>
+        </member>
+        <member name="T:TankPocalypse.WPF.Interfaces.IMenuImages">
+            <summary>
+            MenuImages interface.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Interfaces.IMenuImages.Backgrounds">
+            <summary>
+            Gets the background textures.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Interfaces.IMenuImages.Buttons">
+            <summary>
+            Gets the button textures.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.WPF.Interfaces.ITcpGameClient">
+            <summary>
+            TcpGameClient interface.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Interfaces.ITcpGameClient.Client">
+            <summary>
+            Gets or sets tcpclient.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Interfaces.ITcpGameClient.Gamecontrol">
+            <summary>
+            Gets or sets gamecontrol reference.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Interfaces.ITcpGameClient.Running">
+            <summary>
+            Gets or sets a value indicating whether running state.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Interfaces.ITcpGameClient.AmIReady">
+            <summary>
+            Gets or sets a value indicating whether ready state.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Interfaces.ITcpGameClient.Globalprofiletcp">
+            <summary>
+            Gets or sets or set globaltcpprofile.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Interfaces.ITcpGameClient.CloseConnection">
+            <summary>
+            Close connection.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Interfaces.ITcpGameClient.Connect(System.String)">
+            <summary>
+            Connection ho remote host.
+            </summary>
+            <param name="ip">ip adsress.</param>
+        </member>
+        <member name="M:TankPocalypse.WPF.Interfaces.ITcpGameClient.Run">
+            <summary>
+            Run Cient.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Interfaces.ITcpGameClient.ExitPacketSend">
+            <summary>
+            Sends exit packet.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Interfaces.ITcpGameClient.SendReadyPacket(System.Object,System.EventArgs)">
+            <summary>
+            Sends ready packet.
+            </summary>
+            <param name="sender">object.</param>
+            <param name="e">eventargs.</param>
+        </member>
+        <member name="T:TankPocalypse.WPF.Interfaces.ITcpGameServer">
+            <summary>
+            Skeleton of the TcpGameServer.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Interfaces.ITcpGameServer.Running">
+            <summary>
+            Gets or sets a value indicating whether running value.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Interfaces.ITcpGameServer.Client">
+            <summary>
+            Gets or sets tcpclient.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Interfaces.ITcpGameServer.ClientIsReady">
+            <summary>
+            Gets or sets a value indicating whether clientIsReady.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Interfaces.ITcpGameServer.Stream">
+            <summary>
+            Gets or sets networkStream.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Interfaces.ITcpGameServer.Listener">
+            <summary>
+            Gets or sets listener.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Interfaces.ITcpGameServer.Globalprofiletcp">
+            <summary>
+            Gets or sets globalprofiletcp.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Interfaces.ITcpGameServer.Globalmapdata">
+            <summary>
+            Gets or sets globalmapdata.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Interfaces.ITcpGameServer.Port">
+            <summary>
+            Gets or sets port.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Interfaces.ITcpGameServer.Gamecontrol">
+            <summary>
+            Gets or sets gamecontrol.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Interfaces.ITcpGameServer.Run">
+            <summary>
+            Run Server.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Interfaces.ITcpGameServer.ExitPacketSend">
+            <summary>
+            Exit packet send.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Interfaces.ITcpGameServer.SendGameOverPacket">
+            <summary>
+            Sending Game over packet.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Interfaces.ITcpGameServer.StartPausePacket">
+            <summary>
+            Send Pause packet.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Interfaces.ITcpGameServer.SaveFileSend">
+            <summary>
+            Send SaveFile packet.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Interfaces.ITcpGameServer.UnitCountSend(System.Object,System.EventArgs)">
+            <summary>
+            UnitcountSend.
+            </summary>
+            <param name="sender">sender.</param>
+            <param name="e">parameter eventargs.</param>
+        </member>
+        <member name="M:TankPocalypse.WPF.Interfaces.ITcpGameServer.StartGamePacket">
+            <summary>
+            Send Start game packet.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.WPF.Logic.GameControl">
+            <summary>
+            This is the game control class.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.GameControl.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.GameControl"/> class.
+            </summary>
+            <param name="minimal">Indicates if constructor was called for repository actions.</param>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.GameControl.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.GameControl"/> class.
+            </summary>
+        </member>
+        <member name="E:TankPocalypse.WPF.Logic.GameControl.PauseEvent">
+            <inheritdoc/>
+        </member>
+        <member name="E:TankPocalypse.WPF.Logic.GameControl.GameHasEndedNet">
+            <inheritdoc/>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.GameControl.IsGameEnded">
+            <inheritdoc/>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.GameControl.ConnectionLost">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.GameControl.StartNewGame(TankPocalypse.Logic.Interfaces.IUIMap,System.Byte,System.Byte,TankPocalypse.Logic.Interfaces.IUIProfile,System.Boolean,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.GameControl.LoadGame(TankPocalypse.Logic.Interfaces.IUISavedGame,System.Byte,TankPocalypse.Logic.Interfaces.IUIProfile,System.Boolean,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.GameControl.SetTeamID(System.Byte)">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.GameControl.SetEnd">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.GameControl.DeleteEverything">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.GameControl.PauseGame">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.GameControl.SaveGame">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.GameControl.GetProfiles">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.GameControl.DeleteProfile(TankPocalypse.Logic.Interfaces.IUIProfile)">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.GameControl.AddNewProfile(TankPocalypse.Logic.Interfaces.IUIProfile)">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.GameControl.GetAllMaps">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.GameControl.GetAllSaves">
+            <inheritdoc/>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.GameControl.OnRender(System.Windows.Media.DrawingContext)">
+            <inheritdoc/>
+        </member>
+        <member name="T:TankPocalypse.WPF.Logic.MenuImages">
+            <summary>
+            Setup Menu Images.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.MenuImages.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.MenuImages"/> class.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.MenuImages.Backgrounds">
+            <inheritdoc/>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.MenuImages.Buttons">
+            <inheritdoc/>
+        </member>
+        <member name="T:TankPocalypse.WPF.Logic.Networking.EnemyNetworkPackage">
+            <summary>
+            Enemy Team Network Package structure.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.EnemyNetworkPackage.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.EnemyNetworkPackage"/> class.
+            Sets HP and ID.
+            </summary>
+            <param name="iD">ID.</param>
+            <param name="hP">Health.</param>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.EnemyNetworkPackage.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.EnemyNetworkPackage"/> class.
+            Parameter Free constructor.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.EnemyNetworkPackage.ID">
+            <summary>
+            Gets or sets identifier.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.EnemyNetworkPackage.HP">
+            <summary>
+            Gets or sets health.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.WPF.Logic.Networking.ExitPacket">
+            <summary>
+            Exit packet structure.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.ExitPacket.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.ExitPacket"/> class.
+            With Exit type packetType.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.ExitPacket.#ctor(System.Byte[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.ExitPacket"/> class.
+            </summary>
+            <param name="bytes">bytes.</param>
+        </member>
+        <member name="T:TankPocalypse.WPF.Logic.Networking.Extension">
+            <summary>
+            Extension method.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.Extension.SubArray``1(``0[],System.Int32,System.Int32)">
+            <summary>
+            Extension for Subarrays.
+            </summary>
+            <typeparam name="T">T.</typeparam>
+            <param name="array">Array.</param>
+            <param name="offset">offset.</param>
+            <param name="length">length.</param>
+            <returns> T type subarray.</returns>
+        </member>
+        <member name="T:TankPocalypse.WPF.Logic.Networking.GameEndedPacket">
+            <summary>
+            Game Ended packet.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.GameEndedPacket.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.GameEndedPacket"/> class.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.GameEndedPacket.#ctor(System.Byte[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.GameEndedPacket"/> class.
+            </summary>
+            <param name="bytes">bytes.</param>
+        </member>
+        <member name="T:TankPocalypse.WPF.Logic.Networking.Packet">
+            <summary>
+            Basic Packet structure.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.Packet.#ctor(TankPocalypse.WPF.Logic.Networking.PacketType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.Packet"/> class.
+            Empty packet with only its type.
+            </summary>
+            <param name="type">type.</param>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.Packet.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.Packet"/> class.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.Packet.#ctor(System.Byte[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.Packet"/> class.
+            Convert byte to Entity properties.
+            </summary>
+            <param name="bytes">bytes.</param>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.Packet.Type">
+            <summary>
+            Gets or sets the type of a packet.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.Packet.Payload">
+            <summary>
+            Gets or sets of sets the Payload of the packet.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.Packet.Payloadlength">
+            <summary>
+            Gets or sets payloadlegth of the packet.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.Packet.Serialize(TankPocalypse.WPF.Logic.Networking.Tank)">
+            <summary>
+            Serialize Tank to byte.
+            </summary>
+            <param name="t">Tank.</param>
+            <returns>byte.</returns>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.Packet.SerializeNetworkTank(TankPocalypse.WPF.Logic.Networking.EnemyNetworkPackage)">
+            <summary>
+            Serialize Network tank.
+            </summary>
+            <param name="t">EnemyNetworkPackage.</param>
+            <returns>byte array.</returns>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.Packet.Desserialize(System.Byte[])">
+            <summary>
+            Desserialize Tank.
+            </summary>
+            <param name="data">byte[].</param>
+            <returns>Tank.</returns>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.Packet.CreateByteFromNetworkTankList(System.Collections.Generic.List{TankPocalypse.WPF.Logic.Networking.EnemyNetworkPackage})">
+            <summary>
+            Create Byte from network tanks list.
+            </summary>
+            <param name="tanks">tanks.</param>
+            <returns>byte array.</returns>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.Packet.CreateListFromByte(System.Byte[],System.Int32)">
+            <summary>
+            Create list from byte array.
+            </summary>
+            <param name="byteData">bytearray.</param>
+            <param name="numberofBytesPerEntity">number of bytes.</param>
+            <returns>List of tanks.</returns>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.Packet.GetBytes">
+            <summary>
+            Create byte Array from properties.
+            </summary>
+            <returns>byte array.</returns>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.Packet.Send(System.Net.Sockets.NetworkStream)">
+            <summary>
+            Write data to networkstream.
+            </summary>
+            <param name="stream">networkstream.</param>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.Packet.CreateByteFromList(System.Collections.Generic.List{TankPocalypse.WPF.Logic.Networking.Tank},System.Int32)">
+            <summary>
+            Creates byte from list.
+            </summary>
+            <param name="tanks">tanks.</param>
+            <param name="numberofTanks">numberoftanks.</param>
+            <returns>byte array.</returns>
+        </member>
+        <member name="T:TankPocalypse.WPF.Logic.Networking.PacketType">
+            <summary>
+            PacketType.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.WPF.Logic.Networking.PacketType.None">
+            <summary>
+            None.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.WPF.Logic.Networking.PacketType.Username">
+            <summary>
+            Username.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.WPF.Logic.Networking.PacketType.UsernameMapData">
+            <summary>
+            UsernameMapData.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.WPF.Logic.Networking.PacketType.UserIsReady">
+            <summary>
+            UserIsReady.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.WPF.Logic.Networking.PacketType.UnitCount">
+            <summary>
+            ASD.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.WPF.Logic.Networking.PacketType.CanStartGame">
+            <summary>
+            CanStartGame.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.WPF.Logic.Networking.PacketType.Pause">
+            <summary>
+            Pause.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.WPF.Logic.Networking.PacketType.ClientPackage">
+            <summary>
+            ClientPackage.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.WPF.Logic.Networking.PacketType.ServerPackage">
+            <summary>
+            ServerPackage.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.WPF.Logic.Networking.PacketType.Ping">
+            <summary>
+            Ping.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.WPF.Logic.Networking.PacketType.Exit">
+            <summary>
+            Exit.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.WPF.Logic.Networking.PacketType.GameEnded">
+            <summary>
+            GameEnded.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.WPF.Logic.Networking.PacketType.SaveFile">
+            <summary>
+            SaveFile.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.WPF.Logic.Networking.PingPacket">
+            <summary>
+            PingPacket.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.PingPacket.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.PingPacket"/> class.
+            Empty packet with Ping type.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.PingPacket.#ctor(System.Byte[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.PingPacket"/> class.
+            </summary>
+            <param name="bytes">byte array.</param>
+        </member>
+        <member name="T:TankPocalypse.WPF.Logic.Networking.ReadyPacket">
+            <summary>
+            Ready Packet.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.ReadyPacket.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.ReadyPacket"/> class.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.ReadyPacket.#ctor(System.Byte[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.ReadyPacket"/> class.
+            </summary>
+            <param name="bytes">bytes.</param>
+        </member>
+        <member name="T:TankPocalypse.WPF.Logic.Networking.SaveFileHelper">
+            <summary>
+            SaveFile Helper class.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.SaveFileHelper.#ctor(System.Byte,System.String,System.Xml.Linq.XDocument)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.SaveFileHelper"/> class.
+            Set all property.
+            </summary>
+            <param name="id">id.</param>
+            <param name="sname">sname.</param>
+            <param name="savexdoc">xdoc.</param>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.SaveFileHelper.SaveId">
+            <inheritdoc/>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.SaveFileHelper.SaveName">
+            <inheritdoc/>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.SaveFileHelper.SaveFileXDoc">
+            <inheritdoc/>
+        </member>
+        <member name="T:TankPocalypse.WPF.Logic.Networking.SaveFilePacket">
+            <summary>
+            SaveFile packet structure.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.SaveFilePacket.#ctor(TankPocalypse.Logic.Interfaces.IUISavedGame)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.SaveFilePacket"/> class.
+            Create SaveFilePacket.
+            </summary>
+            <param name="sg">sg.</param>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.SaveFilePacket.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.SaveFilePacket"/> class.
+            Empty constructor.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.SaveFilePacket.#ctor(System.Byte[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.SaveFilePacket"/> class.
+            Convert byte to SaveFile Props.
+            </summary>
+            <param name="bytes">bytes.</param>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.SaveFilePacket.SaveId">
+            <summary>
+            Gets or sets saveId.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.SaveFilePacket.SaveName">
+            <summary>
+            Gets or sets SaveName.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.SaveFilePacket.SaveFileXDoc">
+            <summary>
+            Gets or sets SaveFileXDoc.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.SaveFilePacket.Serializer(TankPocalypse.WPF.Logic.Networking.SaveFilePacket)">
+            <summary>
+            Serializing SaveFilePacket.
+            </summary>
+            <param name="savepacket">savepacket.</param>
+            <returns>byte array.</returns>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.SaveFilePacket.Deserializer(System.Byte[])">
+            <summary>
+            Deserializing SaveFilePacket.
+            </summary>
+            <param name="bytes">byte array..</param>
+            <returns>SaveFilePacket.</returns>
+        </member>
+        <member name="T:TankPocalypse.WPF.Logic.Networking.ServerGamePacket">
+            <summary>
+            ServerGame Packet structure.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.ServerGamePacket.#ctor(System.Collections.Generic.List{TankPocalypse.WPF.Logic.Networking.Tank},System.Collections.Generic.List{TankPocalypse.WPF.Logic.Networking.EnemyNetworkPackage},System.Int32,System.Int32,System.Int16)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.ServerGamePacket"/> class.
+            Setup Properties via constructor.
+            </summary>
+            <param name="tanks">tanks.</param>
+            <param name="networkTanks">networkTanks.</param>
+            <param name="team0Base">team0Base.</param>
+            <param name="team1Base">team1Base.</param>
+            <param name="sessionTime">sessionTime.</param>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.ServerGamePacket.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.ServerGamePacket"/> class.
+            Empty contructor.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.ServerGamePacket.Tanks">
+            <summary>
+            Gets or sets of sets Tankist.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.ServerGamePacket.NetworkTanks">
+            <summary>
+            Gets or sets of sets NetworkTanks.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.ServerGamePacket.Team0Base">
+            <summary>
+            Gets or sets of sets Tankist.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.ServerGamePacket.Team1Base">
+            <summary>
+            Gets or sets of sets Team1Base.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.ServerGamePacket.SessionTime">
+            <summary>
+            Gets or sets of sets SessionTime.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.ServerGamePacket.SetServerGamePacketPayload">
+            <summary>
+            Create byte array from ServerGamepacket Payload.
+            </summary>
+            <returns>byte array.</returns>
+        </member>
+        <member name="T:TankPocalypse.WPF.Logic.Networking.Tank">
+            <summary>
+            Tank basic structure.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.Tank.#ctor(System.Int32,TankPocalypse.WPF.Logic.Networking.VectorExtend,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.Tank"/> class.
+            Setup properties via contructor.
+            </summary>
+            <param name="id">id.</param>
+            <param name="pos">pos.</param>
+            <param name="turret">turret.</param>
+            <param name="body">body.</param>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.Tank.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.Tank"/> class.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.Tank.Id">
+            <summary>
+            Gets or sets id.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.Tank.Position">
+            <summary>
+            Gets or sets Position.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.Tank.TurretIdx">
+            <summary>
+            Gets or sets turretIdx.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.Tank.BodyIdx">
+            <summary>
+            Gets or sets bodyIdx.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.WPF.Logic.Networking.TcpGameClient">
+            <summary>
+            Communication over Tcp protocol as a client.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.WPF.Logic.Networking.TcpGameClient.stopwatch">
+            <summary>
+            Stopwatch.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.WPF.Logic.Networking.TcpGameClient.port">
+            <summary>
+            port.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.WPF.Logic.Networking.TcpGameClient.mainvm">
+            <summary>
+            Mainvm.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.WPF.Logic.Networking.TcpGameClient.lobbyview">
+            <summary>
+            LobbyView.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.WPF.Logic.Networking.TcpGameClient.serverAddress">
+            <summary>
+            ServerAddress.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.WPF.Logic.Networking.TcpGameClient.stream">
+            <summary>
+            Stream.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.WPF.Logic.Networking.TcpGameClient.userMapData">
+            <summary>
+            UserMapDataPacket.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.TcpGameClient.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.TcpGameClient"/> class.
+            Create Tcpclient entity.
+            </summary>
+            <param name="ip">ip.</param>
+            <param name="port">port.</param>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.TcpGameClient.#ctor(TankPocalypse.WPF.VM.MainViewModel)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.TcpGameClient"/> class.
+            constructor.
+            </summary>
+            <param name="mainVM">mainvm.</param>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.TcpGameClient.Client">
+            <inheritdoc/>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.TcpGameClient.Gamecontrol">
+            <inheritdoc/>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.TcpGameClient.Running">
+            <inheritdoc/>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.TcpGameClient.AmIReady">
+            <summary>
+            Gets or sets a value indicating whether amiReady.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.TcpGameClient.Globalprofiletcp">
+            <summary>
+            Gets or sets Globalprofiletcp.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.TcpGameClient.ReadWholeArray(System.IO.Stream,System.Byte[])">
+            <summary>
+            Reading until the whole array is read.
+            </summary>
+            <param name="stream">stream.</param>
+            <param name="data">data.</param>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.TcpGameClient.CloseConnection">
+            <summary>
+            Closing connections and stream.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.TcpGameClient.SetLobby(TankPocalypse.WPF.VM.LobbyViewModel)">
+            <summary>
+            Set up Lobby.
+            </summary>
+            <param name="lb">lobby.</param>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.TcpGameClient.Connect(System.String)">
+            <summary>
+            connecting to a remote server.
+            </summary>
+            <param name="ip">IP address.</param>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.TcpGameClient.Run">
+            <summary>
+            Run.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.TcpGameClient.PingSend">
+            <summary>
+            Sending Ping Packet.
+            </summary>
+            <returns>long.</returns>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.TcpGameClient.ExitPacketSend">
+            <summary>
+            Sending Exit packet.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.TcpGameClient.SendReadyPacket(System.Object,System.EventArgs)">
+            <summary>
+            Sending Ready packet.
+            </summary>
+            <param name="sender">sender.</param>
+            <param name="e">eventargs.</param>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.TcpGameClient.ProcessUserMapData(System.Byte[])">
+            <summary>
+            Handling Usermapdata.
+            </summary>
+            <param name="packet">packet.</param>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.TcpGameClient.IsDisconnected(System.Net.Sockets.TcpClient)">
+            <summary>
+            Check if connection lost or something wrong with it.
+            </summary>
+            <param name="client">Tcpclient.</param>
+            <returns>bool.</returns>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.TcpGameClient.HandleIncomingPackets">
+            <summary>
+            Handling incoming packets.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.WPF.Logic.Networking.TcpGameServer">
+            <summary>
+            Communication over Tcp protocol as a Server.
+            </summary>
+        </member>
+        <member name="F:TankPocalypse.WPF.Logic.Networking.TcpGameServer.mainvm">
+            <summary>
+            Mainvm.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.TcpGameServer.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.TcpGameServer"/> class.
+            Setting up TcpListener and Port.
+            </summary>
+            <param name="port">port.</param>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.TcpGameServer.#ctor(TankPocalypse.WPF.VM.MainViewModel)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.TcpGameServer"/> class.
+            Set up mainvm.
+            </summary>
+            <param name="mainVM">MAINVM.</param>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.TcpGameServer.Running">
+            <summary>
+            Gets or sets a value indicating whether running.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.TcpGameServer.Listener">
+            <summary>
+            Gets or sets a value of the listener.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.TcpGameServer.Client">
+            <summary>
+            Gets or sets Client.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.TcpGameServer.Gamecontrol">
+            <summary>
+            Gets or sets a value of the gamecontrol.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.TcpGameServer.ClientIsReady">
+            <inheritdoc/>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.TcpGameServer.Stream">
+            <summary>
+            Gets or sets networkStream.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.TcpGameServer.Globalprofiletcp">
+            <inheritdoc/>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.TcpGameServer.Globalmapdata">
+            <inheritdoc/>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.TcpGameServer.Port">
+            <summary>
+            Gets or sets a value of the port.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.TcpGameServer.Run">
+            <summary>
+            Start Accepting Tcp cients.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.TcpGameServer.CloseConnection">
+            <summary>
+            Closing all connetions and dispose them.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.TcpGameServer.ConnenctionPacketControl">
+            <summary>
+            Connection handler.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.TcpGameServer.SendGameOverPacket">
+            <summary>
+            Sending Game is over packet.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.TcpGameServer.UnitCountSend(System.Object,System.EventArgs)">
+            <summary>
+            Sending SelectedUnit Count.
+            </summary>
+            <param name="sender">sender.</param>
+            <param name="e">eventarg.</param>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.TcpGameServer.StartGamePacket">
+            <summary>
+            Sending Start Game packet.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.TcpGameServer.StartPausePacket">
+            <summary>
+            Sending Pause event trigger Packet.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.TcpGameServer.ProcessPing(System.Byte[])">
+            <summary>
+            Process ping.
+            </summary>
+            <param name="bytes">byte[].</param>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.TcpGameServer.ExitPacketSend">
+            <summary>
+            Sending Exit Packet.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.TcpGameServer.PingSend">
+            <summary>
+            Sending Ping packet.
+            </summary>
+            <returns>long.</returns>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.TcpGameServer.ProcessUser(System.Byte[])">
+            <summary>
+            Processing user Data.
+            </summary>
+            <param name="packet">byte array.</param>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.TcpGameServer.UserNameMapData">
+            <summary>
+            Creating UserName and Map data packet.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.TcpGameServer.SaveFileSend">
+            <summary>
+            Sending SaveFile packet.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.TcpGameServer.HandleNewConnection">
+            <summary>
+            Accepting new client to connect to the host.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.TcpGameServer.IsDisconnected(System.Net.Sockets.TcpClient)">
+            <summary>
+            Check if remote host is connected or not.
+            </summary>
+            <param name="client">TcpClient.</param>
+            <returns>bool.</returns>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.TcpGameServer.Dispose">
+            <summary>
+            Dispose client.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.WPF.Logic.Networking.UIMap">
+            <summary>
+            UIMAP structure for map sending.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.UIMap.#ctor(System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.UIMap"/> class.
+            Sets all properties of the UIMap.
+            </summary>
+            <param name="name">name.</param>
+            <param name="mapData">mapContent.</param>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.UIMap.MapName">
+            <inheritdoc/>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.UIMap.MapData">
+            <inheritdoc/>
+        </member>
+        <member name="T:TankPocalypse.WPF.Logic.Networking.UnitCountPacket">
+            <summary>
+            UnitCount structure.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.UnitCountPacket.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.UnitCountPacket"/> class.
+            Set up an empty payload with unitcount packet type.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.UnitCountPacket.#ctor(System.Byte[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.UnitCountPacket"/> class.
+            Convert byte to UnitCountPacket properties.
+            </summary>
+            <param name="bytes">byte array.</param>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.UnitCountPacket.UnitCounter">
+            <summary>
+            Gets or sets unit counter.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.WPF.Logic.Networking.UserMapDataPacket">
+            <summary>
+            Username and MapDAta packet class.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.UserMapDataPacket.#ctor(System.String,TankPocalypse.Logic.Interfaces.IUIMap)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.UserMapDataPacket"/> class.
+            Set up Properties with default values and passed values.
+            </summary>
+            <param name="username">username.</param>
+            <param name="map">map.</param>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.UserMapDataPacket.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.UserMapDataPacket"/> class.
+            Empty Constructor.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.UserMapDataPacket.#ctor(System.Byte[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.UserMapDataPacket"/> class.
+            Convert bytes to UserMapDataPacket properties.
+            </summary>
+            <param name="bytes">byte array.</param>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.UserMapDataPacket.UserName">
+            <summary>
+            Gets or sets username.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.UserMapDataPacket.MapInfo">
+            <summary>
+            Gets or sets Mapinfo.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.UserMapDataPacket.Deserializer(System.Byte[])">
+            <summary>
+            Deserializing byte array to UserMapDataPacket.
+            </summary>
+            <param name="bytes">bytes.</param>
+            <returns>UserMapDataPacket.</returns>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.UserMapDataPacket.Serializer(TankPocalypse.WPF.Logic.Networking.UserMapDataPacket)">
+            <summary>
+            Serializing UserMapDataPacket to byte array.
+            </summary>
+            <param name="userpacket">userpacket.</param>
+            <returns>byte array.</returns>
+        </member>
+        <member name="T:TankPocalypse.WPF.Logic.Networking.UsernamePacket">
+            <summary>
+            Username packet class.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.UsernamePacket.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.UsernamePacket"/> class.
+            </summary>
+            <param name="username">username.</param>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.UsernamePacket.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.UsernamePacket"/> class.
+            Empty constructor.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.UsernamePacket.#ctor(System.Byte[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.UsernamePacket"/> class.
+            Convert bytes to UsernamePacket properties.
+            </summary>
+            <param name="bytes">byte array.</param>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.UsernamePacket.UserName">
+            <summary>
+            Gets or sets username.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.UsernamePacket.Serializer(TankPocalypse.WPF.Logic.Networking.UsernamePacket)">
+            <summary>
+            Serializing UsernamePacket to byte array.
+            </summary>
+            <param name="userpacket">userpacket.</param>
+            <returns>byte array.</returns>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.UsernamePacket.Deserializer(System.Byte[])">
+            <summary>
+            Deserializing byte array to UsernamePacket.
+            </summary>
+            <param name="bytes">byte.</param>
+            <returns>UsernamePacket.</returns>
+        </member>
+        <member name="T:TankPocalypse.WPF.Logic.Networking.VectorExtend">
+            <summary>
+            Extended Vector2 properties.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.Logic.Networking.VectorExtend.#ctor(System.Single,System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.Logic.Networking.VectorExtend"/> class.
+            Set Values of properties.
+            </summary>
+            <param name="x">x.</param>
+            <param name="y">y.</param>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.VectorExtend.X">
+            <summary>
+            Gets or sets x value.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.Logic.Networking.VectorExtend.Y">
+            <summary>
+            Gets or sets y value.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.WPF.MainWindow">
+            <summary>
+            Interaction logic for MainWindow.xaml.
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.MainWindow.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.MainWindow"/> class.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.WPF.TankIoc">
+            <summary>
+            Custom IoC.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.TankIoc.Instance">
+            <summary>
+            Gets the Instance.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.WPF.UI.ClientMenu">
+            <summary>
+            Interaction logic for ClientMenu.xaml.
+            </summary>
+            <summary>
+            ClientMenu
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.UI.ClientMenu.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.UI.ClientMenu"/> class.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.UI.ClientMenu.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.WPF.UI.GameViewUserControl">
+            <summary>
+            Interaction logic for GameViewUserControl.xaml.
+            </summary>
+            <summary>
+            GameViewUserControl
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.UI.GameViewUserControl.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.UI.GameViewUserControl"/> class.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.UI.GameViewUserControl.RemoveEverything">
+            <summary>
+            Clears every dependency connection.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.UI.GameViewUserControl.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.WPF.UI.HighScoreMenu">
+            <summary>
+            Interaction logic for HighScoreMenu.xaml.
+            </summary>
+            <summary>
+            HighScoreMenu
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.UI.HighScoreMenu.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.UI.HighScoreMenu"/> class.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.UI.HighScoreMenu.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.WPF.UI.LoadMenu">
+            <summary>
+            Interaction logic for LoadMenu.xaml.
+            </summary>
+            <summary>
+            LoadMenu
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.UI.LoadMenu.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.UI.LoadMenu"/> class.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.UI.LoadMenu.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.WPF.UI.LobbyMenu">
+            <summary>
+            Interaction logic for LobbyMenu.xaml.
+            </summary>
+            <summary>
+            LobbyMenu
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.UI.LobbyMenu.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.UI.LobbyMenu"/> class.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.UI.LobbyMenu.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.WPF.UI.MainMenu">
+            <summary>
+            Interaction logic for MainMenu.xaml.
+            </summary>
+            <summary>
+            MainMenu
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.UI.MainMenu.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.UI.MainMenu"/> class.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.UI.MainMenu.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.WPF.UI.NewProfileMenu">
+            <summary>
+            Interaction logic for NewProfileMenu.xaml.
+            </summary>
+            <summary>
+            NewProfileMenu
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.UI.NewProfileMenu.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.UI.NewProfileMenu"/> class.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.UI.NewProfileMenu.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.WPF.UI.ProfileMenu">
+            <summary>
+            Interaction logic for ProfileMenu.xaml.
+            </summary>
+            <summary>
+            ProfileMenu
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.UI.ProfileMenu.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.UI.ProfileMenu"/> class.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.UI.ProfileMenu.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.WPF.UI.ServerMenu">
+            <summary>
+            Interaction logic for ServerMenu.xaml.
+            </summary>
+            <summary>
+            ServerMenu
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.UI.ServerMenu.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.UI.ServerMenu"/> class.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.UI.ServerMenu.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.WPF.VM.ClientViewModel">
+            <summary>
+            Client UserControls view model.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.VM.ClientViewModel.#ctor(TankPocalypse.WPF.VM.MainViewModel)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.VM.ClientViewModel"/> class.
+            </summary>
+            <param name="mainVM">Main viewmodel.</param>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.ClientViewModel.IpAddress">
+            <summary>
+            Gets or sets the IpAddress of the connection.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.ClientViewModel.JoinLobbyCommand">
+            <summary>
+            Gets the join lobby command.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.ClientViewModel.Background">
+            <summary>
+            Gets or sets the background image.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.ClientViewModel.ButtonDefault">
+            <summary>
+            Gets or sets the default button image.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.ClientViewModel.ButtonHover">
+            <summary>
+            Gets or sets the button hover image.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.ClientViewModel.MainVm">
+            <summary>
+            Gets or sets the main viewmodel.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.WPF.VM.GameViewModel">
+            <summary>
+            GameUserControls viewmodel.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.VM.GameViewModel.#ctor(TankPocalypse.WPF.VM.MainViewModel)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.VM.GameViewModel"/> class.
+            </summary>
+            <param name="mainVM">Main viewmodel.</param>
+        </member>
+        <member name="E:TankPocalypse.WPF.VM.GameViewModel.RemoveUC">
+            <summary>
+            Event for removing UserControl.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.GameViewModel.MenuVisibility">
+            <summary>
+            Gets or sets the menu visibility property.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.GameViewModel.MainVm">
+            <summary>
+            Gets or sets the main viewmodel.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.GameViewModel.GameControl">
+            <summary>
+            Gets or sets the GameControl.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.GameViewModel.IsGamePaused">
+            <summary>
+            Gets a value indicating whether game is paused or not.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.GameViewModel.ContinueCommand">
+            <summary>
+            Gets the continue game command.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.GameViewModel.SaveGameCommand">
+            <summary>
+            Gets the savegame command.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.GameViewModel.Background">
+            <summary>
+            Gets or sets the background property.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.GameViewModel.ButtonDefault">
+            <summary>
+            Gets or sets the default button image.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.GameViewModel.ButtonHover">
+            <summary>
+            Gets or sets the button hover image.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.VM.GameViewModel.SetGameControl(TankPocalypse.WPF.Interfaces.IGameControl)">
+            <summary>
+            Sets the game control.
+            </summary>
+            <param name="gc">GameControl entity.</param>
+        </member>
+        <member name="M:TankPocalypse.WPF.VM.GameViewModel.DeleteEverything">
+            <summary>
+            Cleares every dependency by removing them.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.VM.GameViewModel.InvalidateVisual">
+            <summary>
+            Refresh screen.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.WPF.VM.HighScoreViewModel">
+            <summary>
+            Highscore UserControls viewmodel.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.VM.HighScoreViewModel.#ctor(TankPocalypse.WPF.VM.MainViewModel)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.VM.HighScoreViewModel"/> class.
+            </summary>
+            <param name="mainVM">Main viewmodel.</param>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.HighScoreViewModel.MainVm">
+            <summary>
+            Gets or sets the main viewmodel.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.HighScoreViewModel.Profiles">
+            <summary>
+            Gets or sets the stored profiles.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.HighScoreViewModel.Background">
+            <summary>
+            Gets or sets the background image.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.HighScoreViewModel.ButtonDefault">
+            <summary>
+            Gets or sets the default button image.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.HighScoreViewModel.ButtonHover">
+            <summary>
+            Gets or sets the button hover image.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.WPF.VM.LoadViewModel">
+            <summary>
+            Loadgame usercontrols viewmodel.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.VM.LoadViewModel.#ctor(TankPocalypse.WPF.VM.MainViewModel)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.VM.LoadViewModel"/> class.
+            </summary>
+            <param name="mainVM">Main viewmodel.</param>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.LoadViewModel.MainVm">
+            <summary>
+            Gets or sets the main viewmodel.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.LoadViewModel.AllSaves">
+            <summary>
+            Gets or sets all sotred saves.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.LoadViewModel.SelectedSave">
+            <summary>
+            Gets or sets the selected save.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.LoadViewModel.SelectCommand">
+            <summary>
+            Gets the select command.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.LoadViewModel.BackToLobbyCommand">
+            <summary>
+            Gets the back command.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.LoadViewModel.Background">
+            <summary>
+            Gets or sets the background image.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.LoadViewModel.ButtonDefault">
+            <summary>
+            Gets or sets the default button image.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.LoadViewModel.ButtonHover">
+            <summary>
+            Gets or sets the button hover image.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.WPF.VM.LobbyViewModel">
+            <summary>
+            Lobby UserControls viewmodel.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.VM.LobbyViewModel.#ctor(TankPocalypse.WPF.VM.MainViewModel)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.VM.LobbyViewModel"/> class.
+            </summary>
+            <param name="main">Main viewmodel.</param>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.LobbyViewModel.ReadySetCommand">
+            <summary>
+            Gets the ready set command.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.LobbyViewModel.StartGameCommand">
+            <summary>
+            Gets the start game command.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.LobbyViewModel.SelectSaveToLoad">
+            <summary>
+            Gets the select save to load command.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.LobbyViewModel.UserIsReady">
+            <summary>
+            Gets or sets a value indicating whether local user is ready or not.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.LobbyViewModel.UserReadyText">
+            <summary>
+            Gets or sets the user ready text.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.LobbyViewModel.SelectedUnitCount">
+            <summary>
+            Gets or sets the selected unit count.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.LobbyViewModel.AvailableUnitCount">
+            <summary>
+            Gets or sets the available unit count list.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.LobbyViewModel.MainVm">
+            <summary>
+            Gets or sets the main viewmodel.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.LobbyViewModel.Background">
+            <summary>
+            Gets or sets the background image.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.LobbyViewModel.ButtonDefault">
+            <summary>
+            Gets or sets the default button image.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.LobbyViewModel.ButtonHover">
+            <summary>
+            Gets or sets the button hover image.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.LobbyViewModel.NetworkUserConnected">
+            <summary>
+            Gets or sets the network user connected visibility property.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.WPF.VM.MainViewModel">
+            <summary>
+            This is the main viewmodel. Every usercontrol switching being handled here.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.VM.MainViewModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.VM.MainViewModel"/> class.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.MainViewModel.MenuImages">
+            <summary>
+            Gets the menu images library.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.MainViewModel.ProfileMenuCommand">
+            <summary>
+            Gets the profile menu command.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.MainViewModel.MainMenuCommand">
+            <summary>
+            Gets the main menu command.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.MainViewModel.GameViewCommand">
+            <summary>
+            Gets the game view command.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.MainViewModel.LobbyMenuCommand">
+            <summary>
+            Gets the lobby menu command.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.MainViewModel.ServerMenuCommand">
+            <summary>
+            Gets the server menu command.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.MainViewModel.ClientMenuCommand">
+            <summary>
+            Gets the client menu command.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.MainViewModel.ExitApp">
+            <summary>
+            Gets the exit app command.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.MainViewModel.LoadViewCommand">
+            <summary>
+            Gets the load menu command.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.MainViewModel.NewProfileCommand">
+            <summary>
+            Gets the new profile command.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.MainViewModel.HighScoreCommand">
+            <summary>
+            Gets the high score command.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.MainViewModel.TcpGameServer">
+            <summary>
+            Gets or sets the tcp game server property.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.MainViewModel.TcpGameClient">
+            <summary>
+            Gets or sets the TcpGameClient property.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.MainViewModel.IpAddress">
+            <summary>
+            Gets or sets the ip address of the connection.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.MainViewModel.SelectedViewModel">
+            <summary>
+            Gets or sets the selected viewmodel.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.MainViewModel.GlobalProfile">
+            <summary>
+            Gets or sets the global profile.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.MainViewModel.GlobalMap">
+            <summary>
+            Gets or sets the global map property.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.MainViewModel.AppIsServer">
+            <summary>
+            Gets or sets a value indicating whether application is running in server mode or not.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.MainViewModel.NetworkProfile">
+            <summary>
+            Gets or sets the network profile porperty.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.MainViewModel.GlobatTeamId">
+            <summary>
+            Gets or sets the applications team id.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.MainViewModel.GlobalUnitCount">
+            <summary>
+            Gets or sets the global unit count.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.MainViewModel.GlobalSaveFile">
+            <summary>
+            Gets or sets the global savefile.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.MainViewModel.NetworkUserIsReady">
+            <summary>
+            Gets or sets a value indicating whether network user is ready or not.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.MainViewModel.NetworkUserReadyText">
+            <summary>
+            Gets or sets the networ users ready text.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.MainViewModel.NewProfileNeeded">
+            <summary>
+            Gets or sets a value indicating whether a new profile is needed or not.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.MainViewModel.SelectedUnitCount">
+            <summary>
+            Gets or sets the selected unit count.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.VM.MainViewModel.StartServer">
+            <summary>
+            Starts the game server.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.VM.MainViewModel.StartClient(System.String)">
+            <summary>
+            Starts the game client.
+            </summary>
+            <param name="ip">Connection ip.</param>
+        </member>
+        <member name="T:TankPocalypse.WPF.VM.MenuViewModel">
+            <summary>
+            Menu usercontrols viewmodel.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.VM.MenuViewModel.#ctor(TankPocalypse.WPF.VM.MainViewModel)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.VM.MenuViewModel"/> class.
+            </summary>
+            <param name="mainVM">Main viewmodel.</param>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.MenuViewModel.MainVm">
+            <summary>
+            Gets or sets the main viewmodel.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.MenuViewModel.Background">
+            <summary>
+            Gets or sets the background image.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.MenuViewModel.ButtonDefault">
+            <summary>
+            Gets or sets the default button image.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.MenuViewModel.ButtonHover">
+            <summary>
+            Gets or sets the button hover image.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.WPF.VM.NewProfileViewModel">
+            <summary>
+            NewProfile usercontrols viewmodel.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.VM.NewProfileViewModel.#ctor(TankPocalypse.WPF.VM.MainViewModel)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.VM.NewProfileViewModel"/> class.
+            </summary>
+            <param name="mainVM">Main viewmodel.</param>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.NewProfileViewModel.AddCommand">
+            <summary>
+            Gets the add new porofile command.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.NewProfileViewModel.BackVisibility">
+            <summary>
+            Gets or sets the back button visibility.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.NewProfileViewModel.NewProfile">
+            <summary>
+            Gets or sets the new profile property.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.NewProfileViewModel.TextboxContent">
+            <summary>
+            Gets or sets the iput field content.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.NewProfileViewModel.Background">
+            <summary>
+            Gets or sets the background image.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.NewProfileViewModel.ButtonDefault">
+            <summary>
+            Gets or sets the default button image.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.NewProfileViewModel.ButtonHover">
+            <summary>
+            Gets or sets the button hover image.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.NewProfileViewModel.MainVm">
+            <summary>
+            Gets or sets the main viewmodel.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.WPF.VM.ProfileViewModel">
+            <summary>
+            Profile usercontrols viewmodel.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.VM.ProfileViewModel.#ctor(TankPocalypse.WPF.VM.MainViewModel)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.VM.ProfileViewModel"/> class.
+            </summary>
+            <param name="mainVM">Main viewmodel.</param>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.ProfileViewModel.AddCommand">
+            <summary>
+            Gets the add profile command.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.ProfileViewModel.DeleteCommand">
+            <summary>
+            Gets the dele profile command.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.ProfileViewModel.SelectCommand">
+            <summary>
+            Gets the select profile command.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.ProfileViewModel.Profiles">
+            <summary>
+            Gets or sets the available profiles.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.ProfileViewModel.SelectedProfile">
+            <summary>
+            Gets or sets the selected profile.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.ProfileViewModel.MainVm">
+            <summary>
+            Gets or sets the main viewmodel.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.ProfileViewModel.Background">
+            <summary>
+            Gets or sets the background image.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.ProfileViewModel.ButtonDefault">
+            <summary>
+            Gets or sets the default button image.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.ProfileViewModel.ButtonHover">
+            <summary>
+            Gets or sets the button hover image.
+            </summary>
+        </member>
+        <member name="T:TankPocalypse.WPF.VM.ServerViewModel">
+            <summary>
+            Server usercontrols viewmodel.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.WPF.VM.ServerViewModel.#ctor(TankPocalypse.WPF.VM.MainViewModel)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TankPocalypse.WPF.VM.ServerViewModel"/> class.
+            </summary>
+            <param name="mainVM">Main viewmodel.</param>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.ServerViewModel.StartServerCommand">
+            <summary>
+            Gets the start server command.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.ServerViewModel.SelectedMap">
+            <summary>
+            Gets or sets the selected map.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.ServerViewModel.Maps">
+            <summary>
+            Gets or sets the available maps.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.ServerViewModel.Background">
+            <summary>
+            Gets or sets the background image.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.ServerViewModel.ButtonDefault">
+            <summary>
+            Gets or sets the default button image.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.ServerViewModel.ButtonHover">
+            <summary>
+            Gets or sets the button hover image.
+            </summary>
+        </member>
+        <member name="P:TankPocalypse.WPF.VM.ServerViewModel.MainVm">
+            <summary>
+            Gets or sets the main viewmodel.
+            </summary>
+        </member>
+    </members>
+</doc>

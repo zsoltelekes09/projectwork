@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TankPocalypse.LogicTests</name>
+    </assembly>
+    <members>
+        <member name="T:TankPocalypse.LogicTests.UnitTests">
+            <summary>
+            Unit test class. Contains every unit test cases.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.LogicTests.UnitTests.SaveGameTest">
+            <summary>
+            Tests the savegame method inside GameLogic.cs.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.LogicTests.UnitTests.GetAllProfilesTest">
+            <summary>
+            Tests the GetAllProfiles method inside GameLogic.cs.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.LogicTests.UnitTests.GetAllMapsTest">
+            <summary>
+            Tests the GetAllMaps method inside GameLogic.cs.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.LogicTests.UnitTests.GetAllSavedGameTest">
+            <summary>
+            Tests the GetAllSavedGame method inside GameLogic.cs.
+            </summary>
+        </member>
+        <member name="M:TankPocalypse.LogicTests.UnitTests.CameraCenterTester">
+            <summary>
+            Tests the ApplyWorldCenterCameraPosition method inside GameInputController.cs.
+            </summary>
+        </member>
+    </members>
+</doc>

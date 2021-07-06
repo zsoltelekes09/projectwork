@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="TankPocalypse.WPF.UI.MainMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TankPocalypse.WPF.UI"
+             mc:Ignorable="d" 
+             Loaded="MainMenu_OnLoaded"
+             d:DesignHeight="750" d:DesignWidth="1280">
+    <UserControl.Resources>
+        <Style x:Key="BlueNeonStyle" TargetType="Button">
+            <Setter Property="FontFamily" Value="Lucida Sans Unicode"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="Border1" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <ContentPresenter.Effect>
+                                    <DropShadowEffect x:Name="Effect" BlurRadius="20" ShadowDepth="0" Opacity="1" Color="Aqua"/>
+                                </ContentPresenter.Effect>
+
+                            </ContentPresenter>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="Border1">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="{Binding Path=ButtonHover}" />
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="False">
+                                <Setter Property="Background" TargetName="Border1">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="{Binding Path=ButtonDefault}" />
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Foreground" Value="Aqua"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Image Source="{Binding Path=Background}"/>
+        <!--<Label Content="You're looking at: MainMenu" FontSize="30" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="89" Width="637"/>-->
+        <Button Style="{StaticResource BlueNeonStyle}" Command="{Binding Path=MainVm.ClientMenuCommand}" Content="JOIN GAME" FontSize="30" HorizontalAlignment="Left" Margin="74,147,0,0" VerticalAlignment="Top" Height="58" Width="298"/>
+        <!--<Button Style="{StaticResource Buttons}" Command="{Binding Path=MainVm.ClientMenuCommand}" Content="Client View" FontSize="30" HorizontalAlignment="Left" Margin="30,86,0,0" VerticalAlignment="Top" Height="58" Width="298"/>-->
+        <Button Style="{StaticResource BlueNeonStyle}" Command="{Binding Path=MainVm.ServerMenuCommand}" Content="CREATE GAME" FontSize="30" HorizontalAlignment="Left" Margin="74,89,0,0" VerticalAlignment="Top" Height="58" Width="298"/>
+        <Button Style="{StaticResource BlueNeonStyle}"  Command="{Binding Path=MainVm.ProfileMenuCommand}" Content="PROFILES" FontSize="30" HorizontalAlignment="Left" Margin="74,205,0,0" VerticalAlignment="Top" Height="58" Width="298"/>
+        <Button Style="{StaticResource BlueNeonStyle}"  Command="{Binding Path=MainVm.HighScoreCommand}" Content="HIGH SCORES" FontSize="30" HorizontalAlignment="Left" Margin="74,263,0,0" VerticalAlignment="Top" Height="58" Width="298"/>
+        <Button Style="{StaticResource BlueNeonStyle}"  Command="{Binding Path=MainVm.ExitApp}" Content="EXIT" FontSize="30" HorizontalAlignment="Left" Margin="74,321,0,0" VerticalAlignment="Top" Height="58" Width="298"/>
+        <Label Content="{Binding Path=GlobalProfile.UserName}" FontSize="30" HorizontalAlignment="Left" Margin="499,505,0,0" VerticalAlignment="Top" Height="46" Width="316"/>
+
+    </Grid>
+</UserControl>

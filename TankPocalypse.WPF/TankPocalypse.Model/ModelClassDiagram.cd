@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TankPocalypse.Model.FlowField.Cell">
+    <Position X="3.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACBAAAAAAAAAAAAAAgCAABgAAAAAAAAAAAAAQAACAAA=</HashCode>
+      <FileName>FlowField\Cell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankPocalypse.Model.FlowField.FlowFieldController" BaseTypeListCollapsed="true">
+    <Position X="2" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAiAAAgAAABABAAAAAAAAgQACAAAAQAAMABAAAAA=</HashCode>
+      <FileName>FlowField\FlowFieldController.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TankPocalypse.Model.FlowField.LesserCell">
+    <Position X="5.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACBAAAAAAAAAQAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FlowField\LesserCell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankPocalypse.Model.Physics.GamePhysics" BaseTypeListCollapsed="true">
+    <Position X="11.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAIAAAAAAAAAAQAAAAQAAAEAAABAAAAIAEAA=</HashCode>
+      <FileName>Physics\GamePhysics.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TankPocalypse.Model.Physics.HitLine">
+    <Position X="13.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAgAAAyAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Physics\HitLine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankPocalypse.Model.Units.Vehicle" BaseTypeListCollapsed="true">
+    <Position X="29" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABUqCOChUvQF0QBhKAgkFAACAckApiBgRoEOkKNkTAI=</HashCode>
+      <FileName>Units\Vehicle.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TankPocalypse.Model.World.GameWorld" BaseTypeListCollapsed="true">
+    <Position X="21.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAABAAAAAAACAAgAAAAAAQAAIAABAAAA=</HashCode>
+      <FileName>World\GameWorld.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TankPocalypse.Model.World.Node" BaseTypeListCollapsed="true">
+    <Position X="23.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACACACAAAAAAkAgAAAAAAAAAAAEAIAAAAAAAAAIAAAI=</HashCode>
+      <FileName>World\Node.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TankPocalypse.Model.ExtensionMethods">
+    <Position X="15.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAAAAAACAAAAAAAAAwAQAAAA=</HashCode>
+      <FileName>ExtensionMethods.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TankPocalypse.Model.GameImageController" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>YIgAAAAACBCACAgSACBAAQEQQgABAAAAAYAgAAAAAAA=</HashCode>
+      <FileName>GameImageController.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TankPocalypse.Model.GameModel" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QgoggAAAAAAFgCACQECVBBICAYQBgQAIAACAAFAQAgA=</HashCode>
+      <FileName>GameModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="TankPocalypse.Model.Interfaces.IClickableObject">
+    <Position X="27.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAgAAAAAAACAAAAAAAAAoAAAAAAAAI=</HashCode>
+      <FileName>Interfaces\IClickableObject.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TankPocalypse.Model.Interfaces.IFlowField">
+    <Position X="2" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Interfaces\IFlowField.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TankPocalypse.Model.Interfaces.IGameImageController">
+    <Position X="17.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>YIgAAAAAAACAAAgSACBAAQAQQAABAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IGameImageController.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TankPocalypse.Model.Interfaces.IGameModel">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QgoggAAAAAAEgCACQECVBBICAIQBgQAIAACAAFAQAgA=</HashCode>
+      <FileName>Interfaces\IGameModel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TankPocalypse.Model.Interfaces.IGamePhysics">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAQAAAAAAAAEAAABAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IGamePhysics.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TankPocalypse.Model.Interfaces.IGameWorld">
+    <Position X="21.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAACAAgAAAAAAQAAIAABAAAA=</HashCode>
+      <FileName>Interfaces\IGameWorld.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TankPocalypse.Model.Interfaces.IReorderable">
+    <Position X="29" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACACAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Interfaces\IReorderable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TankPocalypse.Model.Interfaces.IVehicle">
+    <Position X="27.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQICOAAQtAAEAAgCAAgAAACAEkAoCBAAAEAkIMEQAI=</HashCode>
+      <FileName>Interfaces\IVehicle.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="TankPocalypse.Model.Interfaces.VehicleBehavior">
+    <Position X="25.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAASAAAIAA=</HashCode>
+      <FileName>Interfaces\IVehicle.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="TankPocalypse.Model.Interfaces.VehicleMovementBehavior">
+    <Position X="25.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAIQA=</HashCode>
+      <FileName>Interfaces\IVehicle.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
